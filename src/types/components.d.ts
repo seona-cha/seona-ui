@@ -26,6 +26,14 @@ export interface ButtonProps {
   ariaLabel?: string;
   /** 클릭 이벤트 핸들러 */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  /** 버튼 색상 (contained: 배경, outlined: 테두리 & 텍스트, text: 텍스트) */
+  btnColor?: string;
+  /** 버튼 호버 색상 */
+  hoverColor?: string;
+  /** contained 버튼 텍스트 색상 */
+  containedTextColor?: string;
+  /** border-radius */
+  radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
 }
 
 /**
