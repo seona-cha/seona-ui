@@ -1,0 +1,46 @@
+$input-sizes-map: (
+    sm: (
+        width: 100px,
+        height: 30px,
+        font-size: 14px
+    ),
+    md: (
+        width: 150px,
+        height: 40px,
+        font-size: 16px
+    ),
+    lg: (
+        width: 200px,
+        height: 50px,
+        font-size: 18px
+    )
+);
+
+.sui-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: fit-content;
+
+  input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  &__hidden-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  @each $size, $value in $input-sizes-map {
+    &--#{$size} {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+}

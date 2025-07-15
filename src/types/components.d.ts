@@ -5,7 +5,7 @@ import { ReactNode, MouseEvent } from 'react';
  */
 export interface ButtonProps {
   /** 버튼 내부 콘텐츠 (텍스트, 아이콘 등) */
-  children: ReactNode;
+  children?: ReactNode;
   /** 커스텀 클래스명 */
   className?: string;
   /** 모양 */
@@ -52,8 +52,22 @@ export interface TextInputProps {
   size?: 'sm' | 'md' | 'lg';
   /** 풀사이즈 너비 */
   fullWidth?: boolean;
+  /** 이름 */
+  name: string;
+  /** id */
+  id: string;
+  /** 레이블 */
+  hiddenLabel?: string;
+  /** placeholder */
+  placeholder?: string;
+  /** 입력 영역 모양 */
+  variant?: 'filled' | 'outlined' | 'underline';
   /** 타입 */
-  type: 'text' | 'number' | 'password';
+  type?: 'text' | 'number' | 'password';
+  /** border-radius */
+  radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
+  /** 입력 이벤트 핸들러 */
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**

@@ -16,18 +16,18 @@ $btn-variant-map: (
   text: (
     color: var(--btn-color),
     font-weight: 600,
-    text-decoration: underline,
   ),
-  'contained:hover': (
+  'contained:hover:not([disabled])': (
     background: var(--btn-hover-color),
   ),
-  'outlined:hover': (
+  'outlined:hover:not([disabled])': (
     border: 2px solid var(--btn-color),
     background: var(--btn-color),
     color: var(--contained-text-color),
   ),
-  'text:hover': (
+  'text:hover:not([disabled])': (
     color: var(--btn-hover-color),
+    text-decoration: underline,
   ),
 );
 
@@ -50,7 +50,7 @@ $button-size-map: (
 .sui-button {
   display: inline-block;
   width: fit-content;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: var(--btn-radius);
   background: none;
   cursor: pointer;
