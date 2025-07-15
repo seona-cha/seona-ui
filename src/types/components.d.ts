@@ -9,7 +9,7 @@ export interface ButtonProps {
   /** 커스텀 클래스명 */
   className?: string;
   /** 모양 */
-  variant?: 'solid' | 'outline' | 'text';
+  variant?: 'contained' | 'outlined' | 'text';
   /** 클릭시 어떻게 동작할지 */
   type?: 'button' | 'submit' | 'reset' | 'link';
   /** (type: link 일 경우) 이동할 URL */
@@ -22,12 +22,8 @@ export interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   /** 풀사이즈 너비 */
   fullWidth?: boolean;
-  /** 로딩 표시 여부 */
-  loading?: boolean;
   /** 버튼 설명(접근성) */
   ariaLabel?: string;
-  /** 버튼 설명(hover시 노출) */
-  toolTip?: string;
   /** 클릭 이벤트 핸들러 */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
@@ -46,24 +42,63 @@ export interface TextInputProps {
   error?: boolean;
   /** 사이즈 */
   size?: 'sm' | 'md' | 'lg';
-  /** 타입 */
-  type: 'text' | 'password';
   /** 풀사이즈 너비 */
   fullWidth?: boolean;
+  /** 타입 */
+  type: 'text' | 'number' | 'password';
 }
 
 /**
  * Input Type File , Date
  */
+export interface FileInputProps {
+  /** 입력값 */
+  value: string;
+  /** 커스텀 클래스명 */
+  className?: string;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 풀사이즈 너비 */
+  fullWidth?: boolean;
+  /** 타입 */
+  type: 'file' | 'date';
+  /** 파일 선택 이벤트 핸들러 */
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
 /**
  * CheckBox Proptypes
  */
+export interface CheckBoxProps {
+  /** 입력값 */
+  value: string;
+  /** 커스텀 클래스명 */
+  className?: string;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 체크 여부 */
+  checked?: boolean;
+  /** 체크 이벤트 핸들러 */
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
 /**
  * Radio Proptypes
  */
-
+export interface RadioProps {
+  /** 입력값 */
+  value: string;
+  /** 커스텀 클래스명 */
+  className?: string;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 선택 여부 */
+  checked?: boolean;
+  /** 선택 이벤트 핸들러 */
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 /**
  * Select Proptypes
  */

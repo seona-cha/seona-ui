@@ -1,5 +1,5 @@
 import './App.css'
-import Button from './components/Button'
+import Button from './components/ui/Button/Button'
 
 function App() {
 
@@ -31,7 +31,10 @@ function App() {
         <li>carousel</li>
       </ol>
       <hr />
-      <Button onClick={onClickEvent} variant={"solid"} disabled={false}>button</Button>
+      <h2>button</h2>
+      <Button onClick={onClickEvent} variant={"contained"} disabled={false}>button</Button>
+      <Button variant={"outlined"} disabled={false} type="link" href="https://www.naver.com" target="_blank">button</Button>
+      <Button variant={"text"} disabled={false} type="link" href="https://www.naver.com" target="_blank">button</Button>
     </>
   )
 }
