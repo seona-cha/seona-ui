@@ -63,33 +63,13 @@ export interface TextInputProps {
   /** 입력 영역 모양 */
   variant?: 'filled' | 'outlined' | 'underline';
   /** 타입 */
-  type?: 'text' | 'number' | 'password';
+  type?: 'text' | 'number' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'file' | 'hidden' | 'image' | 'range' | 'textarea';
   /** border-radius */
   radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
   /** 입력 이벤트 핸들러 */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  /** 입력 영역 크기 조절 여부(textarea) */
+/** 입력 영역 크기 조절 여부(textarea) */
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
-}
-
-/**
- * Input Type File , Date
- */
-export interface FileInputProps {
-  /** 입력값 */
-  value: string;
-  /** 커스텀 클래스명 */
-  className?: string;
-  /** 비활성화 여부 */
-  disabled?: boolean;
-  /** 사이즈 */
-  size?: 'sm' | 'md' | 'lg';
-  /** 풀사이즈 너비 */
-  fullWidth?: boolean;
-  /** 타입 */
-  type: 'file' | 'date';
-  /** 파일 선택 이벤트 핸들러 */
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**

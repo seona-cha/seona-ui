@@ -38,6 +38,7 @@ function App() {
     hiddenLabel: 'input',
     size: 'md',
     fullWidth: false,
+    type: 'text',
     onChange: () => {},
   } as TextInputProps)
 
@@ -156,6 +157,28 @@ function App() {
               onChange={(e) => setInputProps({ ...InputProps, value: e.target.value })}
             />
             <div className="sui-guide__control-group">
+              {/* <div>
+                <label>타입</label>
+                <select value={InputProps.type} onChange={(e) => setInputProps({ ...InputProps, type: e.target.value as 'text' | 'number' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'file' | 'hidden' | 'image' | 'range' | 'textarea' })}>
+                  <option value="text">text</option>
+                  <option value="number">number</option>
+                  <option value="password">password</option>
+                  <option value="email">email</option>
+                  <option value="tel">tel</option>
+                  <option value="url">url</option>
+                  <option value="search">search</option>
+                  <option value="date">date</option>
+                  <option value="time">time</option>
+                  <option value="datetime-local">datetime-local</option>
+                  <option value="month">month</option>
+                  <option value="week">week</option>
+                  <option value="color">color</option>
+                  <option value="file">file</option>
+                  <option value="hidden">hidden</option>
+                  <option value="image">image</option>
+                  <option value="range">range</option>
+                </select>
+              </div> */}
               <div>
                 <label>사이즈</label>
                 <select value={InputProps.size} onChange={(e) => setInputProps({ ...InputProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
