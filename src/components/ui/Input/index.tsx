@@ -30,27 +30,26 @@ const Input: React.FC<TextInputProps> = ({
     '--input-radius': radius,
   } as React.CSSProperties;
 
-return (
-    <div className="sui-input">
-        {hiddenLabel && (
-            <label className="sui-input__hidden-label" htmlFor={id}>
-            {hiddenLabel}
-            </label>
-        )}
-        <input 
-            id={id}
-            name={name}
-            type={type}
-            style={styles}
-            className={classes}
-            onChange={onChange}
-            disabled={disabled}
-            placeholder={placeholder}
-            value={value}
-        >
-        </input>
-    </div>
-)
+  return (
+      <div className={classes}>
+          {hiddenLabel && (
+              <label className="sui-input__hidden-label" htmlFor={id}>
+              {hiddenLabel}
+              </label>
+          )}
+          <input 
+              id={id}
+              name={name}
+              type={type}
+              style={styles}
+              onChange={onChange}
+              disabled={disabled}
+              placeholder={placeholder}
+              value={value}
+          >
+          </input>
+      </div>
+  )
 }
 
 export default Input

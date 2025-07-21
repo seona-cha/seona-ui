@@ -22,12 +22,6 @@ $input-sizes-map: (
   gap: 10px;
   width: fit-content;
 
-  input {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px;
-  }
-
   &__hidden-label {
     position: absolute;
     width: 1px;
@@ -41,6 +35,21 @@ $input-sizes-map: (
       @each $key, $value in $value {
         #{$key}: $value;
       }
+    }
+  }
+
+  input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--full-width {
+    width: 100%;
+    input {
+      width: 100%;
     }
   }
 }
