@@ -39,7 +39,7 @@ export interface ButtonProps {
 /**
  * input, TextArea  Proptypes
  */
-export interface TextInputProps {
+export interface InputProps {
   /** 입력값 */
   value: string;
   /** 커스텀 클래스명 */

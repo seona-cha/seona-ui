@@ -1,8 +1,8 @@
 import React from 'react'
-import type { TextInputProps } from '../../../types/components'
+import type { InputProps } from '../../../types/components'
 import './textarea.scss'
 
-const Textarea: React.FC<TextInputProps> = ({
+const Textarea: React.FC<InputProps> = ({
   className = '',
   disabled = false,
   size = 'md',

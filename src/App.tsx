@@ -2,7 +2,7 @@ import Button from './components/ui/Button'
 import Input from './components/ui/Input'
 import Textarea from './components/ui/Textarea'
 import { useState } from 'react'
-import type { ButtonProps, TextInputProps } from './types/components'
+import type { ButtonProps, InputProps } from './types/components'
 
 function App() {
 
@@ -31,7 +31,7 @@ function App() {
     fullWidth: false,
     type: 'text',
     onChange: () => {},
-  } as TextInputProps)
+  } as InputProps)
 
   const [TextareaProps, setTextareaProps] = useState({
 
@@ -42,7 +42,7 @@ function App() {
     size: 'md',
     fullWidth: false,
     onChange: () => {},
-  } as TextInputProps)
+  } as InputProps)
 
   return (
     <>

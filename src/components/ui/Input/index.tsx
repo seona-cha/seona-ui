@@ -1,8 +1,8 @@
 import React from 'react'
-import type { TextInputProps } from '../../../types/components'
+import type { InputProps } from '../../../types/components'
 import './input.scss'
 
-const Input: React.FC<TextInputProps> = ({
+const Input: React.FC<InputProps> = ({
   className = '',
   disabled = false,
   size = 'md',
