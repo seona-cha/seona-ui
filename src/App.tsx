@@ -2,7 +2,7 @@ import Button from './components/ui/Button'
 import Input from './components/ui/Input'
 import Textarea from './components/ui/Textarea'
 import { useState } from 'react'
-import type { ButtonProps } from './types/components'
+import type { ButtonProps, TextInputProps } from './types/components'
 
 function App() {
 
@@ -22,21 +22,41 @@ function App() {
     radius: '24px',
     type: 'button',
     fullWidth: false,
-    children: 'h2',
+    children: 'button',
     btnColor: '#6366F1',
     hoverColor: '#4F46E5',
     containedTextColor: '#fff',
+    onClick: () => {
+      console.log('클릭')
+    },
   } as ButtonProps)
+
+  const [InputProps, setInputProps] = useState({
+    value: '',
+    name: 'input',
+    id: 'input',
+    hiddenLabel: 'input',
+    size: 'md',
+    fullWidth: false,
+    onChange: () => {},
+  } as TextInputProps)
+
+  const [TextareaProps, setTextareaProps] = useState({
+
+    value: '',
+    name: 'textarea',
+    id: 'textarea',
+    hiddenLabel: 'textarea',
+    size: 'md',
+    fullWidth: false,
+    onChange: () => {},
+  } as TextInputProps)
 
   const onChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({
       ...inputValue,
       [e.target.name]: e.target.value
     })
-  }
-
-  const onClickEvent = () => {
-    console.log('클릭')
   }
 
   return (
@@ -55,9 +75,6 @@ function App() {
       </header>
       <div className="sui-page-wrapper">
         {/* <ol>
-          <li>button</li>
-          <li>input</li>
-          <li>textarea</li>
           <li>checkbox</li>
           <li>radio</li>
           <li>select</li>
@@ -75,212 +92,164 @@ function App() {
           <li>carousel</li>
         </ol> */}
         <div className="sui-guide">
-          <h2 className="sui-guide__title">button</h2>
+          <h2 className="sui-guide__title">Button</h2>
           <div className="sui-guide__control">
-              <Button
-                {...buttonProps}
-              >
-                {buttonProps.children}          
-              </Button>
-              <div className="sui-guide__control-group">
-                <div>
-                  <label>사이즈</label>
-                  <select value={buttonProps.size} onChange={(e) => setButtonProps({ ...buttonProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
-                    <option value="sm">sm</option>
-                    <option value="md">md</option>
-                    <option value="lg">lg</option>
-                  </select>
-                </div>
-                <div>
-                  <label>버튼 모양</label>
-                  <select value={buttonProps.variant} onChange={(e) => setButtonProps({ ...buttonProps, variant: e.target.value as 'contained' | 'outlined' | 'text' })}>
-                    <option value="contained">contained</option>
-                    <option value="outlined">outlined</option>
-                    <option value="text">text</option>
-                  </select>
-                </div>
-                <div>
-                  <label>비활성화</label>
-                  <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, disabled: e.target.checked })} />
-                </div>
-                <div>
-                  <label>Radius</label>
-                  <input type="number" onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })} /> px
-                </div>
-                <div>
-                  <label>Full Width</label>
-                  <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, fullWidth: e.target.checked })} />
-                </div>
-                <div>
-                  <label>버튼 텍스트</label>  
-                  <input type="text" onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })} />
-                </div>
+            <Button
+              {...buttonProps}
+            >
+              {buttonProps.children}          
+            </Button>
+            <div className="sui-guide__control-group">
+              <div>
+                <label>사이즈</label>
+                <select value={buttonProps.size} onChange={(e) => setButtonProps({ ...buttonProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
               </div>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-            <div>
-              <Button
-                size="sm"
-                onClick={onClickEvent}
-                variant={"contained"}
-                disabled={false}
-                radius="999px"
-              >
-                다운로드
-              </Button>
-              <Button
-                size="sm"
-                variant={"outlined"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-              >
-                button
-              </Button>
-              <Button
-                size="sm"
-                variant={"text"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-              >
-                button
-              </Button>
+              <div>
+                <label>버튼 모양</label>
+                <select value={buttonProps.variant} onChange={(e) => setButtonProps({ ...buttonProps, variant: e.target.value as 'contained' | 'outlined' | 'text' })}>
+                  <option value="contained">contained</option>
+                  <option value="outlined">outlined</option>
+                  <option value="text">text</option>
+                </select>
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>Radius</label>
+                <Input
+                  name="radius"
+                  id="radius"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })}
+                  value={buttonProps.radius?.replace('px', '') || ''}
+                />
+                <span>px</span>
+              </div>
+              <div>
+                <label>Full Width</label>
+                <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, fullWidth: e.target.checked })} />
+              </div>
+              <div>
+                <label>버튼 텍스트</label>  
+                <Input
+                  name="children"
+                  id="children"
+                  type="text"
+                  onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })}
+                  value={buttonProps.children as string}
+                />
+              </div>
             </div>
-            <div>
-              <Button
-                size="md"
-                onClick={onClickEvent}
-                variant={"contained"}
-                disabled={false}
-                radius="999px"
-              >
-                button
-              </Button>
-              <Button
-                size="md"
-                variant={"outlined"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-              >
-                button
-              </Button>
-              <Button
-                size="md"
-                variant={"text"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-              >
-                button
-              </Button>
-            </div>
-            <div>
-              <Button
-                size="lg"
-                onClick={onClickEvent}
-                variant={"contained"}
-                disabled={false}
-                radius="999px"
-              >
-                button
-              </Button>
-              <Button
-                size="lg"
-                variant={"outlined"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-              >
-                button
-              </Button>
-            </div>
-              <Button
-                size="lg"
-                variant={"outlined"}
-                disabled={false}
-                type="link"
-                href="https://www.naver.com"
-                target="_blank"
-                fullWidth={true}
-              >
-                button
-              </Button>
           </div>
           
-          <h2 className="sui-guide__title">input</h2>
-          <Input
-            id="input1"
-            name="input1"
-            hiddenLabel="input"
-            value={inputValue.input1}
-            size="sm"
-            type="text"
-            onChange={onChangeEvent}
-          />
-          <Input
-            id="input2"
-            name="input2"
-            hiddenLabel="input"
-            value={inputValue.input2}
-            type="text"
-            onChange={onChangeEvent}
-          />
-          <Input
-            id="input3"
-            name="input3"
-            value={inputValue.input3}
-            type="text"
-            size="lg"
-            onChange={onChangeEvent}
-          />
-          <Input
-            id="input3"
-            name="input3"
-            value={inputValue.input3}
-            type="text"
-            size="lg"
-            onChange={onChangeEvent}
-            fullWidth={true}
-          />
-          <Textarea
-            id="textarea1"
-            name="textarea1"
-            value={inputValue.textarea1}
-            onChange={onChangeEvent}
-            size="sm"
-          />
-          <Textarea
-            id="textarea2"
-            name="textarea2"
-            value={inputValue.textarea2}
-            onChange={onChangeEvent}
-            size="md"
-            resize="horizontal"
-          />  
-          <Textarea
-            id="textarea3"
-            name="textarea3"
-            value={inputValue.textarea3}
-            onChange={onChangeEvent}
-            size="lg"
-            resize="both"
-          />
-          <Textarea
-            id="textarea3"
-            name="textarea3"
-            value={inputValue.textarea3}
-            onChange={onChangeEvent}
-            size="lg"
-            fullWidth={true}
-            resize="vertical"
-          />
+          <h2 className="sui-guide__title">Input</h2>
+          <div className="sui-guide__control">
+            <Input
+              {...InputProps}
+              onChange={(e) => setInputProps({ ...InputProps, value: e.target.value })}
+            />
+            <div className="sui-guide__control-group">
+              <div>
+                <label>사이즈</label>
+                <select value={InputProps.size} onChange={(e) => setInputProps({ ...InputProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>Radius</label>
+                <Input
+                  name="radius"
+                  id="radius"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setInputProps({ ...InputProps, radius: e.target.value + 'px' as `${number}px` })}
+                  value={InputProps.radius?.replace('px', '') || ''}
+                />
+                <span>px</span>
+              </div>
+              <div>
+                <label>Full Width</label>
+                <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, fullWidth: e.target.checked })} />
+              </div>
+            </div>
+            <div>
+              <p>hiddenLabel Props 활용 예시</p>
+            </div>
+          </div>
+          
+          <h2 className="sui-guide__title">Textarea</h2>
+          <div className="sui-guide__control">
+            <Textarea 
+              className="sui-guide__textarea"
+              {...TextareaProps}
+              onChange={(e) => setTextareaProps({ ...TextareaProps, value: e.target.value })}
+            />
+            <div className="sui-guide__control-group">
+              <div>
+                <label>사이즈</label>
+                <select value={TextareaProps.size} onChange={(e) => setTextareaProps({ ...TextareaProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>Radius</label>
+                <Input
+                  name="radius"
+                  id="radius"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setTextareaProps({ ...TextareaProps, radius: e.target.value + 'px' as `${number}px` })}
+                  value={TextareaProps.radius?.replace('px', '') || ''}
+                />
+                <span>px</span>
+              </div>
+              <div>
+                <label>Full Width</label>
+                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, fullWidth: e.target.checked })} />
+              </div>
+              <div>
+                <label>Resize</label>
+                <select value={TextareaProps.resize} onChange={(e) => setTextareaProps({ ...TextareaProps, resize: e.target.value as 'none' | 'both' | 'horizontal' | 'vertical' })}>
+                  <option value="none">none</option>
+                  <option value="both">both</option>
+                  <option value="horizontal">horizontal</option>
+                  <option value="vertical">vertical</option>
+                </select>
+                <Button
+                  size="sm"
+                  variant="text"
+                  onClick={() => {
+                    const textarea = document.querySelector('.sui-guide__textarea textarea') as HTMLTextAreaElement
+                    textarea.style.removeProperty('width')
+                    textarea.style.removeProperty('height')
+                  }}
+                >
+                  reset
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <h2 className="sui-guide__title">Checkbox</h2>
         </div>
       </div>
     </>
