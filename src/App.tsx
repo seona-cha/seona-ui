@@ -6,15 +6,6 @@ import type { ButtonProps, TextInputProps } from './types/components'
 
 function App() {
 
-  const [inputValue, setInputValue] = useState({
-    input1: '',
-    input2: '',
-    input3: '',
-    textarea1: '',
-    textarea2: '',
-    textarea3: '',
-  })
-
   const [buttonProps, setButtonProps] = useState({
     size: 'lg',
     variant: 'contained',
@@ -52,13 +43,6 @@ function App() {
     fullWidth: false,
     onChange: () => {},
   } as TextInputProps)
-
-  const onChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue({
-      ...inputValue,
-      [e.target.name]: e.target.value
-    })
-  }
 
   return (
     <>
