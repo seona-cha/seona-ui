@@ -1,5 +1,6 @@
 import Button from './components/ui/Button'
 import Input from './components/ui/Input'
+import Textarea from './components/ui/Textarea'
 import { useState } from 'react'
 import type { ButtonProps } from './types/components'
 
@@ -9,6 +10,9 @@ function App() {
     input1: '',
     input2: '',
     input3: '',
+    textarea1: '',
+    textarea2: '',
+    textarea3: '',
   })
 
   const [buttonProps, setButtonProps] = useState({
@@ -123,7 +127,6 @@ function App() {
                 radius="999px"
               >
                 다운로드
-          
               </Button>
               <Button
                 size="sm"
@@ -236,6 +239,47 @@ function App() {
             type="text"
             size="lg"
             onChange={onChangeEvent}
+          />
+          <Input
+            id="input3"
+            name="input3"
+            value={inputValue.input3}
+            type="text"
+            size="lg"
+            onChange={onChangeEvent}
+            fullWidth={true}
+          />
+          <Textarea
+            id="textarea1"
+            name="textarea1"
+            value={inputValue.textarea1}
+            onChange={onChangeEvent}
+            size="sm"
+          />
+          <Textarea
+            id="textarea2"
+            name="textarea2"
+            value={inputValue.textarea2}
+            onChange={onChangeEvent}
+            size="md"
+            resize="horizontal"
+          />  
+          <Textarea
+            id="textarea3"
+            name="textarea3"
+            value={inputValue.textarea3}
+            onChange={onChangeEvent}
+            size="lg"
+            resize="both"
+          />
+          <Textarea
+            id="textarea3"
+            name="textarea3"
+            value={inputValue.textarea3}
+            onChange={onChangeEvent}
+            size="lg"
+            fullWidth={true}
+            resize="vertical"
           />
         </div>
       </div>

@@ -68,6 +68,8 @@ export interface TextInputProps {
   radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
   /** 입력 이벤트 핸들러 */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  /** 입력 영역 크기 조절 여부(textarea) */
+  resize?: 'none' | 'both' | 'horizontal' | 'vertical';
 }
 
 /**

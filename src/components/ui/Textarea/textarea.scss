@@ -1,0 +1,71 @@
+$textarea-sizes-map: (
+    sm: (
+        width: 200px,
+        height: 120px,
+        font-size: 14px
+    ),
+    md: (
+        width: 300px,
+        height: 160px,
+        font-size: 16px
+    ),
+    lg: (
+        width: 400px,
+        height: 200px,
+        font-size: 18px
+    )
+);
+
+.sui-textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: fit-content;
+
+  textarea {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  &__hidden-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  @each $size, $value in $textarea-sizes-map {
+    &--#{$size} {
+        textarea {
+            @each $key, $value in $value {
+                #{$key}: $value;
+            }
+        }
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+    textarea {
+      width: 100%;
+    }
+  }
+
+  &--resize-none {
+    resize: none;
+  }
+
+  &--resize-both {
+    resize: both;
+  }
+
+  &--resize-horizontal {
+    resize: horizontal;
+  }
+
+  &--resize-vertical {
+    resize: vertical;
+  }
+}
