@@ -2,14 +2,17 @@ $checkbox-sizes-map: (
   sm: (
     width: 16px,
     height: 16px,
+    font-size: 14px,
   ),
   md: (
     width: 20px,
     height: 20px,
+    font-size: 16px,
   ),
   lg: (
     width: 24px,
     height: 24px,
+    font-size: 18px,
   ),
 );
 
@@ -28,6 +31,7 @@ $checkbox-sizes-map: (
                 gap: 8px;
                 position: relative;
                 user-select: none;
+                font-size: map-get($value, font-size);
                 
 
                 &::before {
@@ -38,9 +42,8 @@ $checkbox-sizes-map: (
                     border-radius: 4px;
                     background-color: #fff;
                     border: 1px solid #ddd;
-                    @each $key, $value in $value {
-                        #{$key}: $value;
-                    }
+                    width: map-get($value, width);
+                    height: map-get($value, height);
                 }
 
                 &::after {
@@ -55,9 +58,8 @@ $checkbox-sizes-map: (
                     background-color: #fff;
                     content: '';
                     display: none;
-                    @each $key, $value in $value {
-                        #{$key}: $value;
-                    }
+                    width: map-get($value, width);
+                    height: map-get($value, height);
                 }
 
                 &:focus-visible {
