@@ -1,8 +1,9 @@
 import Button from './components/ui/Button'
 import Input from './components/ui/Input'
 import Textarea from './components/ui/Textarea'
+import Checkbox from './components/ui/Checkbox'
 import { useState } from 'react'
-import type { ButtonProps, InputProps } from './types/components'
+import type { ButtonProps, InputProps, CheckBoxProps } from './types/components'
 
 function App() {
 
@@ -44,6 +45,17 @@ function App() {
     onChange: () => {},
   } as InputProps)
 
+  const [CheckboxProps, setCheckboxProps] = useState({
+    label: 'checkbox',
+    size: 'md',
+    bgColor: '#6366F1',
+    hiddenLabel: false,
+    value: '',
+    disabled: false,
+    checked: false,
+    onChange: () => {},
+  } as CheckBoxProps)
+
   return (
     <>
       <header className="sui-header">
@@ -59,23 +71,6 @@ function App() {
         </div>
       </header>
       <div className="sui-page-wrapper">
-        {/* <ol>
-          <li>checkbox</li>
-          <li>radio</li>
-          <li>select</li>
-          <li>switch</li>
-          <li>modal</li>
-          <li>tooltip</li>
-          <li>dropdown</li>
-          <li>pagination</li>
-          <li>table</li>
-          <li>tabs</li>
-          <li>alert</li>
-          <li>badge</li>
-          <li>card</li>
-          <li>collapse</li>
-          <li>carousel</li>
-        </ol> */}
         <div className="sui-guide">
           <h2 className="sui-guide__title">Button</h2>
           <div className="sui-guide__control">
@@ -257,6 +252,52 @@ function App() {
           </div>
           
           <h2 className="sui-guide__title">Checkbox</h2>
+          <div className="sui-guide__control">
+            <Checkbox
+              {...CheckboxProps}
+              onChange={(e) => setCheckboxProps({ ...CheckboxProps, checked: e.target.checked })}
+            />
+            <div className="sui-guide__control-group">
+              <div>
+                <label>레이블</label>
+                <Input
+                  name="label"
+                  id="label"
+                  type="text"
+                  value={CheckboxProps.label}
+                  onChange={(e) => setCheckboxProps({ ...CheckboxProps, label: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>모양</label>
+                <select value={CheckboxProps.variant} onChange={(e) => setCheckboxProps({ ...CheckboxProps, variant: e.target.value as 'square' | 'circle' })}>
+                  <option value="square">square</option>
+                  <option value="circle">circle</option>
+                  <option value="line">line</option>
+                </select>
+              </div>
+              <div>
+                <label>레이블 숨김</label>
+                <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, hiddenLabel: e.target.checked })} />
+              </div>
+              <div>
+                <label>사이즈</label>
+                <select value={CheckboxProps.size} onChange={(e) => setCheckboxProps({ ...CheckboxProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>체크 여부</label>
+                <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, checked: e.target.checked })} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
@@ -267,7 +308,7 @@ export default App
 
 /*
   각 컴포넌트 구현 후 가이드 페이지 제작
-  갤러리 형태로 10개씩 나열, 페이지네이션으로 페이지 이동
+  갤러리 형태로 6개씩 나열, 페이지네이션으로 페이지 이동
   각 컴포넌트 클릭 시 상단 하이라이트 표시(컴포넌트 이름, ui, 코드 예시-복사가능하도록), 
   하단 아코디언 열면 props 예시 보여주기
   더보기 버튼 클릭시 모달창 표시: 컴포넌트 예시, props 예시, 토글 형태로 컴포넌트 예시 보여주기

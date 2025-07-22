@@ -76,14 +76,24 @@ export interface InputProps {
  * CheckBox Proptypes
  */
 export interface CheckBoxProps {
+  /** 레이블 */
+  label: string;
+  /** 레이블 숨김 여부 */
+  hiddenLabel?: boolean;
   /** 입력값 */
   value: string;
   /** 커스텀 클래스명 */
   className?: string;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 모양 */
+  variant?: 'square' | 'circle' | 'line';
   /** 비활성화 여부 */
   disabled?: boolean;
   /** 체크 여부 */
   checked?: boolean;
+  /** 배경색 */
+  bgColor?: string;
   /** 체크 이벤트 핸들러 */
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
