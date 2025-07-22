@@ -21,6 +21,7 @@ $textarea-sizes-map: (
   flex-direction: column;
   gap: 10px;
   width: fit-content;
+  max-width: 100%;
 
   textarea {
     border: 1px solid #ddd;
@@ -68,5 +69,14 @@ $textarea-sizes-map: (
 
   &--resize-vertical {
     resize: vertical;
+  }
+
+  &--filled {
+    textarea {
+      border: none;
+      background: #f4f4f4;
+      border-radius: var(--textarea-radius);
+      padding: 4px;
+    }
   }
 }

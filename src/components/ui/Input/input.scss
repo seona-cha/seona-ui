@@ -46,6 +46,24 @@ $input-sizes-map: (
     padding: 4px;
   }
 
+  
+  &--filled {
+    input {
+      border: none!important;
+      background: #f4f4f4;
+      border-radius: var(--input-radius);
+      padding: 4px;
+    }
+  }
+
+  &--underline {
+    input {
+      border: none;
+      border-bottom: 2px solid #ddd;
+      border-radius: 0!important;
+    }
+  }
+
   &--full-width {
     width: 100%;
     input {

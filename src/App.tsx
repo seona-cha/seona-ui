@@ -29,6 +29,7 @@ function App() {
     id: 'input',
     hiddenLabel: 'input',
     size: 'md',
+    variant: 'filled',
     fullWidth: false,
     type: 'text',
     onChange: () => {},
@@ -42,6 +43,7 @@ function App() {
     hiddenLabel: 'textarea',
     size: 'md',
     fullWidth: false,
+    variant: 'filled',
     onChange: () => {},
   } as InputProps)
 
@@ -167,6 +169,14 @@ function App() {
                 </select>
               </div>
               <div>
+                <label>모양</label>
+                <select value={InputProps.variant} onChange={(e) => setInputProps({ ...InputProps, variant: e.target.value as 'filled' | 'outlined' | 'underline' })}>
+                  <option value="filled">filled</option>
+                  <option value="outlined">outlined</option>
+                  <option value="underline">underline</option>
+                </select>
+              </div>
+              <div>
                 <label>비활성화</label>
                 <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, disabled: e.target.checked })} />
               </div>
@@ -206,6 +216,13 @@ function App() {
                   <option value="sm">sm</option>
                   <option value="md">md</option>
                   <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
+                <label>모양</label>
+                <select value={TextareaProps.variant} onChange={(e) => setTextareaProps({ ...TextareaProps, variant: e.target.value as 'filled' | 'outlined' | 'underline' })}>
+                  <option value="filled">filled</option>
+                  <option value="outlined">outlined</option>
                 </select>
               </div>
               <div>
