@@ -14,9 +14,9 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth,
   ariaLabel,
   onClick,
-  btnColor = '#2186df',
-  hoverColor = '#0759d5',
-  textColor = '#fff',
+  btnColor = '#6366F1',
+  hoverColor = '#4F46E5',
+  textColor = variant === 'contained' ? '#fff' : 'var(--btn-color)',
   hoverEffect = true,
   radius = '0px',
 }) => {

@@ -17,7 +17,6 @@ function App() {
     children: 'button',
     btnColor: '#6366F1',
     hoverColor: '#4F46E5',
-    textColor: '#ffffff',
     hoverEffect: true,
     onClick: () => {
       console.log('클릭')
@@ -134,7 +133,7 @@ function App() {
               </div>
               <div>
                 <label>텍스트 색상</label>
-                <input type="color" value={buttonProps.textColor} onChange={(e) => setButtonProps({ ...buttonProps, textColor: e.target.value })} />
+                <input type="color" value={buttonProps.textColor || (buttonProps.variant === 'contained' ? '#ffffff' : '#4F46E5')} onChange={(e) => setButtonProps({ ...buttonProps, textColor: e.target.value })} />
               </div>
               <div>
                 <label>비활성화</label>

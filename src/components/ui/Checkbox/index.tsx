@@ -9,7 +9,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
     disabled = false,
     checked = false,
     variant = 'square',
-    color = '#2186df',
+    color = '#6366F1',
     className = '',
     onChange,
 }) => {     
