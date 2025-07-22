@@ -33,6 +33,7 @@ function App() {
     variant: 'filled',
     fullWidth: false,
     type: 'text',
+    radius: '6px',
     onChange: () => {},
   } as InputProps)
 
@@ -45,13 +46,14 @@ function App() {
     size: 'md',
     fullWidth: false,
     variant: 'filled',
+    radius: '6px',
     onChange: () => {},
   } as InputProps)
 
   const [CheckboxProps, setCheckboxProps] = useState({
-    label: 'checkbox',
+    label: 'label',
     size: 'md',
-    bgColor: '#6366F1',
+    color: '#6366F1',
     hiddenLabel: false,
     value: '',
     disabled: false,
@@ -84,6 +86,16 @@ function App() {
             </Button>
             <div className="sui-guide__control-group">
               <div>
+                <label>버튼 텍스트</label>  
+                <Input
+                  name="children"
+                  id="children"
+                  type="text"
+                  onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })}
+                  value={buttonProps.children as string}
+                />
+              </div>
+              <div>
                 <label>사이즈</label>
                 <select value={buttonProps.size} onChange={(e) => setButtonProps({ ...buttonProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
                   <option value="sm">sm</option>
@@ -92,12 +104,24 @@ function App() {
                 </select>
               </div>
               <div>
-                <label>버튼 모양</label>
+                <label>모양</label>
                 <select value={buttonProps.variant} onChange={(e) => setButtonProps({ ...buttonProps, variant: e.target.value as 'contained' | 'outlined' | 'text' })}>
                   <option value="contained">contained</option>
                   <option value="outlined">outlined</option>
                   <option value="text">text</option>
                 </select>
+              </div>
+              <div>
+                <label>Radius</label>
+                <Input
+                  name="radius"
+                  id="radius"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })}
+                  value={buttonProps.radius?.replace('px', '') || ''}
+                />
+                <span>px</span>
               </div>
               <div>
                 <label>기본 색상</label>
@@ -116,30 +140,8 @@ function App() {
                 <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, disabled: e.target.checked })} />
               </div>
               <div>
-                <label>Radius</label>
-                <Input
-                  name="radius"
-                  id="radius"
-                  type="number"
-                  size="md"
-                  onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })}
-                  value={buttonProps.radius?.replace('px', '') || ''}
-                />
-                <span>px</span>
-              </div>
-              <div>
                 <label>Full Width</label>
                 <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, fullWidth: e.target.checked })} />
-              </div>
-              <div>
-                <label>버튼 텍스트</label>  
-                <Input
-                  name="children"
-                  id="children"
-                  type="text"
-                  onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })}
-                  value={buttonProps.children as string}
-                />
               </div>
               <div>
                 <label>hover 효과</label>
@@ -155,28 +157,6 @@ function App() {
               onChange={(e) => setInputProps({ ...InputProps, value: e.target.value })}
             />
             <div className="sui-guide__control-group">
-              {/* <div>
-                <label>타입</label>
-                <select value={InputProps.type} onChange={(e) => setInputProps({ ...InputProps, type: e.target.value as 'text' | 'number' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'file' | 'hidden' | 'image' | 'range' | 'textarea' })}>
-                  <option value="text">text</option>
-                  <option value="number">number</option>
-                  <option value="password">password</option>
-                  <option value="email">email</option>
-                  <option value="tel">tel</option>
-                  <option value="url">url</option>
-                  <option value="search">search</option>
-                  <option value="date">date</option>
-                  <option value="time">time</option>
-                  <option value="datetime-local">datetime-local</option>
-                  <option value="month">month</option>
-                  <option value="week">week</option>
-                  <option value="color">color</option>
-                  <option value="file">file</option>
-                  <option value="hidden">hidden</option>
-                  <option value="image">image</option>
-                  <option value="range">range</option>
-                </select>
-              </div> */}
               <div>
                 <label>사이즈</label>
                 <select value={InputProps.size} onChange={(e) => setInputProps({ ...InputProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
@@ -194,10 +174,6 @@ function App() {
                 </select>
               </div>
               <div>
-                <label>비활성화</label>
-                <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, disabled: e.target.checked })} />
-              </div>
-              <div>
                 <label>Radius</label>
                 <Input
                   name="radius"
@@ -210,12 +186,13 @@ function App() {
                 <span>px</span>
               </div>
               <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, disabled: e.target.checked })} />
+              </div>
+              <div>
                 <label>Full Width</label>
                 <input type="checkbox" onChange={(e) => setInputProps({ ...InputProps, fullWidth: e.target.checked })} />
               </div>
-            </div>
-            <div>
-              <p>hiddenLabel Props 활용 예시</p>
             </div>
           </div>
           
@@ -243,26 +220,6 @@ function App() {
                 </select>
               </div>
               <div>
-                <label>비활성화</label>
-                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, disabled: e.target.checked })} />
-              </div>
-              <div>
-                <label>Radius</label>
-                <Input
-                  name="radius"
-                  id="radius"
-                  type="number"
-                  size="md"
-                  onChange={(e) => setTextareaProps({ ...TextareaProps, radius: e.target.value + 'px' as `${number}px` })}
-                  value={TextareaProps.radius?.replace('px', '') || ''}
-                />
-                <span>px</span>
-              </div>
-              <div>
-                <label>Full Width</label>
-                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, fullWidth: e.target.checked })} />
-              </div>
-              <div>
                 <label>Resize</label>
                 <select value={TextareaProps.resize} onChange={(e) => setTextareaProps({ ...TextareaProps, resize: e.target.value as 'none' | 'both' | 'horizontal' | 'vertical' })}>
                   <option value="none">none</option>
@@ -281,6 +238,26 @@ function App() {
                 >
                   reset
                 </Button>
+              </div>
+              <div>
+                <label>Radius</label>
+                <Input
+                  name="radius"
+                  id="radius"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setTextareaProps({ ...TextareaProps, radius: e.target.value + 'px' as `${number}px` })}
+                  value={TextareaProps.radius?.replace('px', '') || ''}
+                />
+                <span>px</span>
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>Full Width</label>
+                <input type="checkbox" onChange={(e) => setTextareaProps({ ...TextareaProps, fullWidth: e.target.checked })} />
               </div>
             </div>
           </div>
@@ -303,6 +280,14 @@ function App() {
                 />
               </div>
               <div>
+                <label>사이즈</label>
+                <select value={CheckboxProps.size} onChange={(e) => setCheckboxProps({ ...CheckboxProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
                 <label>모양</label>
                 <select value={CheckboxProps.variant} onChange={(e) => setCheckboxProps({ ...CheckboxProps, variant: e.target.value as 'square' | 'circle' })}>
                   <option value="square">square</option>
@@ -313,14 +298,6 @@ function App() {
               <div>
                 <label>레이블 숨김</label>
                 <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, hiddenLabel: e.target.checked })} />
-              </div>
-              <div>
-                <label>사이즈</label>
-                <select value={CheckboxProps.size} onChange={(e) => setCheckboxProps({ ...CheckboxProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
-                  <option value="sm">sm</option>
-                  <option value="md">md</option>
-                  <option value="lg">lg</option>
-                </select>
               </div>
               <div>
                 <label>비활성화</label>
