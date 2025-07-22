@@ -296,6 +296,10 @@ function App() {
                 </select>
               </div>
               <div>
+                <label>색상</label>
+                <input type="color" value={CheckboxProps.color} onChange={(e) => setCheckboxProps({ ...CheckboxProps, color: e.target.value })} />
+              </div>
+              <div>
                 <label>레이블 숨김</label>
                 <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, hiddenLabel: e.target.checked })} />
               </div>

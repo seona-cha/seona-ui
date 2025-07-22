@@ -48,10 +48,11 @@ $checkbox-sizes-map: (
                     top: 0;
                     left: 0;
                     display: block;
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill='%23ffffff' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
-                    background-size: 70%;
-                    background-repeat: no-repeat;
-                    background-position: 65% 65%;
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                    mask-size: 70%;
+                    mask-repeat: no-repeat;
+                    mask-position: 65% 65%;
+                    background-color: #fff;
                     content: '';
                     display: none;
                     @each $key, $value in $value {
@@ -60,7 +61,7 @@ $checkbox-sizes-map: (
                 }
 
                 &:focus-visible {
-                    outline: 2px solid #2186df;
+                    outline: 2px solid #000;
                     outline-offset: 2px;
                 }
             }
@@ -69,7 +70,8 @@ $checkbox-sizes-map: (
                 &~label {
 
                     &::before {
-                        background-color: var(--sui-checkbox-bg-color);
+                        border-color: var(--sui-checkbox-color);
+                        background-color: var(--sui-checkbox-color);
                     }
 
                     &::after {
@@ -80,6 +82,8 @@ $checkbox-sizes-map: (
 
             &:disabled {
                 &~label {
+                    color: #999;
+
                     &::before {
                         background-color: #ececec;
                     }
@@ -128,19 +132,18 @@ $checkbox-sizes-map: (
         input {
             &~label {
                 &::before {
-                    background: transparent;
-                    background-size: 90%;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill='%23ddd' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
                     border: none;
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                    mask-size: 70%;
+                    mask-repeat: no-repeat;
+                    mask-position: 65% 65%;
+                    background-color: #ddd;
                 }
             }
 
             &:disabled {
                 &~label {
                     &::before {
-                        background-color: transparent;
                     }
                 }
 
@@ -150,7 +153,7 @@ $checkbox-sizes-map: (
                             background-color: transparent;
                         }
                         &::after {
-                            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill='%23aaa' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                            background-color: #aaa;
                         }
                     }
 
@@ -164,10 +167,7 @@ $checkbox-sizes-map: (
                     }
 
                     &::after {
-                        background-color: transparent;
-                        background-size: 90%;
-                        background-position: center;
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill='%23000000' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                        background-color: var(--sui-checkbox-color);
                     }
                 }
             }

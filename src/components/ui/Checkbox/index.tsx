@@ -9,7 +9,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
     disabled = false,
     checked = false,
     variant = 'square',
-    bgColor = '#2186df',
+    color = '#2186df',
     onChange,
 }) => {     
     const classes = [
@@ -20,7 +20,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
     ].filter(Boolean).join(' ')
 
     const style = {
-        '--sui-checkbox-bg-color': bgColor,
+        '--sui-checkbox-color': color,
     } as React.CSSProperties
 
     return (
