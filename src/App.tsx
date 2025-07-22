@@ -17,7 +17,8 @@ function App() {
     children: 'button',
     btnColor: '#6366F1',
     hoverColor: '#4F46E5',
-    containedTextColor: '#fff',
+    textColor: '#ffffff',
+    hoverEffect: true,
     onClick: () => {
       console.log('클릭')
     },
@@ -99,6 +100,18 @@ function App() {
                 </select>
               </div>
               <div>
+                <label>기본 색상</label>
+                <input type="color" value={buttonProps.btnColor} onChange={(e) => setButtonProps({ ...buttonProps, btnColor: e.target.value })} />
+              </div>
+              <div>
+                <label>hover 색상</label>
+                <input type="color" value={buttonProps.hoverColor} onChange={(e) => setButtonProps({ ...buttonProps, hoverColor: e.target.value })} />
+              </div>
+              <div>
+                <label>텍스트 색상</label>
+                <input type="color" value={buttonProps.textColor} onChange={(e) => setButtonProps({ ...buttonProps, textColor: e.target.value })} />
+              </div>
+              <div>
                 <label>비활성화</label>
                 <input type="checkbox" onChange={(e) => setButtonProps({ ...buttonProps, disabled: e.target.checked })} />
               </div>
@@ -127,6 +140,10 @@ function App() {
                   onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })}
                   value={buttonProps.children as string}
                 />
+              </div>
+              <div>
+                <label>hover 효과</label>
+                <input type="checkbox" checked={buttonProps.hoverEffect} onChange={(e) => setButtonProps({ ...buttonProps, hoverEffect: e.target.checked })} />
               </div>
             </div>
           </div>

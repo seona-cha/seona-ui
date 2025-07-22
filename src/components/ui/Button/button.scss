@@ -1,31 +1,31 @@
 // props로 받은 변수
 // --btn-color : 버튼 색상
 // --btn-hover-color : 버튼 호버시 색상
-// --contained-text-color : contained  버튼 텍스트 색상
+// --btn-text-color :  버튼 텍스트 색상
 // --btn-radius : 버튼 라운드 값
 
 $btn-variant-map: (
   contained: (
     background: var(--btn-color),
-    color: var(--contained-text-color),
+    color: var(--btn-text-color),
   ),
   outlined: (
-    color: var(--btn-color),
+    color: var(--btn-text-color),
     border: 2px solid var(--btn-color),
   ),
   text: (
-    color: var(--btn-color),
+    color: var(--btn-text-color),
     font-weight: 600,
   ),
-  'contained:hover:not([disabled])': (
+  'contained:hover:not([disabled]):not(.sui-button--no-hover-effect)': (
     background: var(--btn-hover-color),
   ),
-  'outlined:hover:not([disabled])': (
-    border: 2px solid var(--btn-color),
-    background: var(--btn-color),
-    color: var(--contained-text-color),
+  'outlined:hover:not([disabled]):not(.sui-button--no-hover-effect)': (
+    border: 2px solid var(--btn-hover-color),
+    background: var(--btn-hover-color),
+    color: var(--btn-text-color),
   ),
-  'text:hover:not([disabled])': (
+  'text:hover:not([disabled]):not(.sui-button--no-hover-effect)': (
     color: var(--btn-hover-color),
     text-decoration: underline,
   ),

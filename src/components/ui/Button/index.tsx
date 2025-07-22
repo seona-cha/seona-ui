@@ -16,7 +16,8 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   btnColor = '#2186df',
   hoverColor = '#0759d5',
-  containedTextColor = '#fff',
+  textColor = '#fff',
+  hoverEffect = true,
   radius = '0px',
 }) => {
   const classes = [
@@ -25,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     `sui-button--${size}`,
     fullWidth ? 'sui-button--full-width' : '',
     disabled ? 'sui-button--disabled' : '',
+    hoverEffect ? '' : 'sui-button--no-hover-effect',
     className,
   ].filter(Boolean).join(' ');
 
@@ -32,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
     '--btn-radius': radius,
     '--btn-color': btnColor,
     '--btn-hover-color': hoverColor,
-    '--contained-text-color': containedTextColor,
+    '--btn-text-color': textColor,
   } as React.CSSProperties;
 
   if (type === 'link') {
