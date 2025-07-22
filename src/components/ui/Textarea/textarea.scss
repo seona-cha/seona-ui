@@ -2,17 +2,20 @@ $textarea-sizes-map: (
     sm: (
         width: 200px,
         height: 120px,
-        font-size: 14px
+        font-size: 14px,
+        padding: 8px,
     ),
     md: (
         width: 300px,
         height: 160px,
-        font-size: 16px
+        font-size: 16px,
+        padding: 10px,
     ),
     lg: (
         width: 400px,
         height: 200px,
-        font-size: 18px
+        font-size: 18px,
+        padding: 12px,
     )
 );
 
@@ -26,7 +29,6 @@ $textarea-sizes-map: (
   textarea {
     border: 1px solid #ddd;
     border-radius: var(--textarea-radius);
-    padding: 4px;
     max-width: 100%;
 
     &:disabled {
@@ -81,7 +83,6 @@ $textarea-sizes-map: (
       border: none;
       background: #f4f4f4;
       border-radius: var(--textarea-radius);
-      padding: 4px;
     }
   }
 }
