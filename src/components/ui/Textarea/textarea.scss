@@ -28,6 +28,11 @@ $textarea-sizes-map: (
     border-radius: var(--textarea-radius);
     padding: 4px;
     max-width: 100%;
+
+    &:disabled {
+      background: #eee;
+      color: #aaa;
+    }
   }
 
   &__hidden-label {

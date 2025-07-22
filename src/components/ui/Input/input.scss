@@ -30,6 +30,18 @@ $input-sizes-map: (
     clip: rect(0 0 0 0);
   }
 
+  input {
+    border: 1px solid #ddd;
+    border-radius: var(--input-radius);
+    padding: 4px;
+
+    &:disabled {
+      background: #eee;
+      color: #aaa;
+    }
+  }
+
+
   @each $size, $value in $input-sizes-map {
     &--#{$size} {
       input {
@@ -39,13 +51,6 @@ $input-sizes-map: (
       }
     }
   }
-
-  input {
-    border: 1px solid #ddd;
-    border-radius: var(--input-radius);
-    padding: 4px;
-  }
-
   
   &--filled {
     input {
