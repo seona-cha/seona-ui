@@ -66,6 +66,12 @@ $input-sizes-map: (
       border: none;
       border-bottom: 2px solid #ddd;
       border-radius: 0!important;
+      outline: none;
+
+      &:focus {
+        border-color: #000;
+        outline: none;
+      }
     }
   }
 
