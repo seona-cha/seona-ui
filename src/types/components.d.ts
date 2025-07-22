@@ -31,7 +31,9 @@ export interface ButtonProps {
   /** 버튼 호버 색상 */
   hoverColor?: string;
   /** contained 버튼 텍스트 색상 */
-  containedTextColor?: string;
+  textColor?: string;
+  /** hover 효과 여부 */
+  hoverEffect?: boolean;
   /** border-radius */
   radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
 }
