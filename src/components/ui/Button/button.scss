@@ -46,6 +46,21 @@ $button-size-map: (
   ),
 );
 
+$icon-size-map: (
+  sm: (
+    width: 14px,
+    height: 14px,
+  ),
+  md: (
+    width: 16px,
+    height: 16px,
+  ),
+  lg: (
+    width: 18px,
+    height: 18px,
+  ),
+);  
+
 
 .sui-button {
   display: inline-block;
@@ -70,9 +85,19 @@ $button-size-map: (
   // size
   @each $size, $style in $button-size-map {
     &--#{$size} {
-      @each $key,
-      $value in $style {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(map-get($icon-size-map, $size, width) / 2);
+
+      @each $key, $value in $style {
         #{$key}: $value;
+      }
+
+      svg {
+        width: map-get($icon-size-map, $size, width);
+        height: map-get($icon-size-map, $size, height);
+        fill: var(--btn-text-color);
       }
     }
   }
