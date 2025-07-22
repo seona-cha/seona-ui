@@ -32,13 +32,13 @@ function App() {
     size: 'md',
     variant: 'filled',
     fullWidth: false,
+    placeholder: '',
     type: 'text',
     radius: '6px',
     onChange: () => {},
   } as InputProps)
 
   const [TextareaProps, setTextareaProps] = useState({
-
     value: '',
     name: 'textarea',
     id: 'textarea',
@@ -46,6 +46,7 @@ function App() {
     size: 'md',
     fullWidth: false,
     variant: 'filled',
+    placeholder: '',
     radius: '6px',
     onChange: () => {},
   } as InputProps)
@@ -88,8 +89,8 @@ function App() {
               <div>
                 <label>버튼 텍스트</label>  
                 <Input
-                  name="children"
-                  id="children"
+                  name="button-children"
+                  id="button-children"
                   type="text"
                   onChange={(e) => setButtonProps({ ...buttonProps, children: e.target.value })}
                   value={buttonProps.children as string}
@@ -114,8 +115,8 @@ function App() {
               <div>
                 <label>Radius</label>
                 <Input
-                  name="radius"
-                  id="radius"
+                  name="button-radius"
+                  id="button-radius"
                   type="number"
                   size="md"
                   onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })}
@@ -158,6 +159,16 @@ function App() {
             />
             <div className="sui-guide__control-group">
               <div>
+                <label htmlFor="input-placeholder">placeholder</label>
+                <Input
+                  name="input-placeholder"
+                  id="input-placeholder"
+                  type="text"
+                  value={InputProps.placeholder as string}
+                  onChange={(e) => setInputProps({ ...InputProps, placeholder: e.target.value })}
+                />
+              </div>
+              <div>
                 <label>사이즈</label>
                 <select value={InputProps.size} onChange={(e) => setInputProps({ ...InputProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
                   <option value="sm">sm</option>
@@ -176,8 +187,8 @@ function App() {
               <div>
                 <label>Radius</label>
                 <Input
-                  name="radius"
-                  id="radius"
+                  name="input-radius"
+                  id="input-radius"
                   type="number"
                   size="md"
                   onChange={(e) => setInputProps({ ...InputProps, radius: e.target.value + 'px' as `${number}px` })}
@@ -204,6 +215,16 @@ function App() {
               onChange={(e) => setTextareaProps({ ...TextareaProps, value: e.target.value })}
             />
             <div className="sui-guide__control-group">
+              <div>
+                <label htmlFor="textarea-placeholder">placeholder</label>
+                <Input
+                  name="textarea-placeholder"
+                  id="textarea-placeholder"
+                  type="text"
+                  value={TextareaProps.placeholder as string}
+                  onChange={(e) => setTextareaProps({ ...TextareaProps, placeholder: e.target.value })}
+                />
+              </div>
               <div>
                 <label>사이즈</label>
                 <select value={TextareaProps.size} onChange={(e) => setTextareaProps({ ...TextareaProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
@@ -242,8 +263,8 @@ function App() {
               <div>
                 <label>Radius</label>
                 <Input
-                  name="radius"
-                  id="radius"
+                  name="textarea-radius"
+                  id="textarea-radius"
                   type="number"
                   size="md"
                   onChange={(e) => setTextareaProps({ ...TextareaProps, radius: e.target.value + 'px' as `${number}px` })}
@@ -272,8 +293,8 @@ function App() {
               <div>
                 <label>레이블</label>
                 <Input
-                  name="label"
-                  id="label"
+                  name="checkbox-label"
+                  id="checkbox-label"
                   type="text"
                   value={CheckboxProps.label}
                   onChange={(e) => setCheckboxProps({ ...CheckboxProps, label: e.target.value })}

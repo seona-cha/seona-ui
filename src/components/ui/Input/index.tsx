@@ -3,19 +3,20 @@ import type { InputProps } from '../../../types/components'
 import './input.scss'
 
 const Input: React.FC<InputProps> = ({
-  className = '',
-  disabled = false,
-  size = 'md',
-  fullWidth,
   name,
   id,
-  value,
   type = 'text',
+  value,
+  disabled = false,
+  size = 'md',
   variant = 'filled',
+  fullWidth,
   hiddenLabel,
   onChange,
   placeholder,
   radius = '0px',
+  className = '',
+  error = false,
 }) => {
   const classes = [
     'sui-input',
@@ -23,6 +24,7 @@ const Input: React.FC<InputProps> = ({
     `sui-input--${size}`,
     fullWidth ? 'sui-input--full-width' : '',
     disabled ? 'sui-input--disabled' : '',
+    error ? 'sui-input--error' : '',
     className,
   ].filter(Boolean).join(' ');
 

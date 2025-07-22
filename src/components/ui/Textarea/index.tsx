@@ -3,18 +3,18 @@ import type { InputProps } from '../../../types/components'
 import './textarea.scss'
 
 const Textarea: React.FC<InputProps> = ({
-  className = '',
-  disabled = false,
-  size = 'md',
-  fullWidth,
   name,
   id,
   value,
+  disabled = false,
+  size = 'md',
   variant = 'filled',
+  fullWidth,
   hiddenLabel,
   onChange,
   placeholder,
   radius = '0px',
+  className = '',
   resize = 'none',
 }) => {
   const classes = [

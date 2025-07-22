@@ -10,6 +10,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
     checked = false,
     variant = 'square',
     color = '#2186df',
+    className = '',
     onChange,
 }) => {     
     const classes = [
@@ -17,6 +18,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
         `sui-checkbox--${size}`,
         `sui-checkbox--${variant}`,
         hiddenLabel && 'sui-checkbox--hidden-label',
+        className,
     ].filter(Boolean).join(' ')
 
     const style = {

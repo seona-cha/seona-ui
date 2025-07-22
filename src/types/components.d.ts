@@ -8,10 +8,10 @@ export interface ButtonProps {
   children?: ReactNode;
   /** 커스텀 클래스명 */
   className?: string;
-  /** 모양 */
-  variant?: 'contained' | 'outlined' | 'text';
   /** 클릭시 어떻게 동작할지 */
   type?: 'button' | 'submit' | 'reset' | 'link';
+  /** 모양 */
+  variant?: 'contained' | 'outlined' | 'text';
   /** (type: link 일 경우) 이동할 URL */
   href?: string;
   /** (type: link 일 경우) 새창 또는 현재창 */
@@ -42,35 +42,35 @@ export interface ButtonProps {
  * input, TextArea  Proptypes
  */
 export interface InputProps {
-  /** 입력값 */
-  value: string;
-  /** 커스텀 클래스명 */
-  className?: string;
-  /** 비활성화 여부 */
-  disabled?: boolean;
-  /** 에러 발생 여부 */
-  error?: boolean;
-  /** 사이즈 */
-  size?: 'sm' | 'md' | 'lg';
-  /** 풀사이즈 너비 */
-  fullWidth?: boolean;
   /** 이름 */
   name: string;
   /** id */
   id: string;
-  /** 레이블 */
+  /** 타입 */
+  type?: 'text' | 'number' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'file' | 'hidden' | 'image' | 'range' | 'textarea';
+  /** 입력값 */
+  value?: string;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 입력 영역 모양 */
+  variant?: 'filled' | 'outlined' | 'underline';
+  /** 풀사이즈 너비 */
+  fullWidth?: boolean;
+  /** 숨김 레이블 */
   hiddenLabel?: string;
   /** placeholder */
   placeholder?: string;
-  /** 입력 영역 모양 */
-  variant?: 'filled' | 'outlined' | 'underline';
-  /** 타입 */
-  type?: 'text' | 'number' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'file' | 'hidden' | 'image' | 'range' | 'textarea';
   /** border-radius */
   radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
   /** 입력 이벤트 핸들러 */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-/** 입력 영역 크기 조절 여부(textarea) */
+  /** 커스텀 클래스명 */
+  className?: string;
+  /** 에러 발생 여부 */
+  error?: boolean;
+  /** 입력 영역 크기 조절 여부(textarea) */
   resize?: 'none' | 'both' | 'horizontal' | 'vertical';
 }
 
@@ -80,14 +80,12 @@ export interface InputProps {
 export interface CheckBoxProps {
   /** 레이블 */
   label: string;
-  /** 레이블 숨김 여부 */
-  hiddenLabel?: boolean;
-  /** 입력값 */
-  value: string;
-  /** 커스텀 클래스명 */
-  className?: string;
   /** 사이즈 */
   size?: 'sm' | 'md' | 'lg';
+  /** 레이블 숨김 여부 */
+  hiddenLabel?: boolean;
+  /** 커스텀 클래스명 */
+  className?: string;
   /** 모양 */
   variant?: 'square' | 'circle' | 'line';
   /** 비활성화 여부 */
