@@ -13,10 +13,12 @@ const Input: React.FC<InputProps> = ({
   fullWidth,
   hiddenLabel,
   onChange,
+  onBlur,
   placeholder,
   radius = '0px',
   className = '',
   error = false,
+  errorMessage = '입력값을 확인해주세요.',
 }) => {
   const classes = [
     'sui-input',
@@ -45,11 +47,17 @@ const Input: React.FC<InputProps> = ({
               type={type}
               style={styles}
               onChange={onChange}
+              onBlur={onBlur}
               disabled={disabled}
               placeholder={placeholder}
               value={value}
           >
           </input>
+          {error && (
+            <div className="sui-input__error-message">
+              {errorMessage}
+            </div>
+          )}
       </div>
   )
 }

@@ -41,6 +41,10 @@ $input-sizes-map: (
     }
   }
 
+  &__error-message {
+    color: rgb(212, 10, 54);
+    font-size: 12px;
+  }
 
   @each $size, $value in $input-sizes-map {
     &--#{$size} {

@@ -175,6 +175,14 @@ function App() {
             <Input
               {...InputProps}
               onChange={(e) => setInputProps({ ...InputProps, value: e.target.value })}
+              onBlur={(e) => {
+                console.log(e.target.value)
+                if (e.target.value !== '가나다라') {
+                  setInputProps({ ...InputProps, error: true, errorMessage: '가나다라 라고 입력해주세요.' })
+                } else {
+                  setInputProps({ ...InputProps, error: false, errorMessage: '' })
+                }
+              }}
             />
             <div className="sui-guide__control-group">
               <div>
@@ -352,6 +360,10 @@ function App() {
                 <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, checked: e.target.checked })} />
               </div>
             </div>
+          </div>
+
+          <h2 className="sui-guide__title">Radio</h2>
+          <div className="sui-guide__control">
           </div>
         </div>
       </div>
