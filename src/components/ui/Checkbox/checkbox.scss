@@ -95,6 +95,7 @@ $checkbox-sizes-map: (
                     &~label {
                         &::before {
                             background-color: #cccccc;
+                            border-color: #ccc;
                         }
                     }
                 }
