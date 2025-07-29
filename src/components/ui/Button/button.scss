@@ -1,3 +1,4 @@
+@use 'sass:map';
 // props로 받은 변수
 // --btn-color : 버튼 색상
 // --btn-hover-color : 버튼 호버시 색상
@@ -88,15 +89,15 @@ $icon-size-map: (
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: calc(map-get($icon-size-map, $size, width) / 2);
+      gap: calc(map.get($icon-size-map, $size, width) / 2);
 
       @each $key, $value in $style {
         #{$key}: $value;
       }
 
       svg {
-        width: map-get($icon-size-map, $size, width);
-        height: map-get($icon-size-map, $size, height);
+        width: map.get($icon-size-map, $size, width);
+        height: map.get($icon-size-map, $size, height);
         fill: var(--btn-text-color);
       }
     }
