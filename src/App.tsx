@@ -2,8 +2,9 @@ import Button from './components/ui/Button'
 import Input from './components/ui/Input'
 import Textarea from './components/ui/Textarea'
 import Checkbox from './components/ui/Checkbox'
+import Radio from './components/ui/Radio'
 import { useState } from 'react'
-import type { ButtonProps, InputProps, CheckBoxProps } from './types/components'
+import type { ButtonProps, InputProps, CheckBoxProps, RadioProps, SelectProps } from './types/components'
 
 function App() {
 
@@ -60,6 +61,17 @@ function App() {
     checked: false,
     onChange: () => {},
   } as CheckBoxProps)
+
+  const [radioValue, setRadioValue] = useState('option1')
+  const [radio2Value, setRadio2Value] = useState('option1')
+  const [radioProps, setRadioProps] = useState({
+    name: 'radio',
+    size: 'md',
+    hiddenLabel: false,
+    variant: 'circle',
+    options: [],
+    color: '#6366F1',
+  } as RadioProps)
 
   return (
     <>

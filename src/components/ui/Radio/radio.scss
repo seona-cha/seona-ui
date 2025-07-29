@@ -1,0 +1,111 @@
+$radio-sizes: (
+  sm: (
+    size: 16px,
+    check-size: 8px,
+    font-size: 14px,
+  ),
+  md: (
+    size: 20px,
+    check-size: 10px,
+    font-size: 16px,
+  ),
+  lg: (
+    size: 24px,
+    check-size: 12px,
+    font-size: 18px,
+  ),
+);
+
+.sui-radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: fit-content;
+
+  @each $size, $value in $radio-sizes {
+    &--#{$size} {
+      font-size: map-get($value, 'font-size');
+
+      input {
+        display: none;
+        
+        &:checked + .sui-radio__label::after {
+          transform: scale(1)!important;
+        }
+
+        &:disabled + .sui-radio__label::before {
+          background-color: #ececec;
+        }
+      }
+
+      label {
+        user-select: none;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        &::before {
+          content: '';
+          display: block;
+          border-radius: 50%;
+          border: 1px solid #ddd;
+          box-sizing: border-box;
+          width: map-get($value, 'size');
+          height: map-get($value, 'size');
+        }
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: var(--sui-radio-color);
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.2s ease-in-out;
+          top: calc((map-get($value, 'size') - map-get($value, 'check-size')) / 2);
+          left: calc((map-get($value, 'size') - map-get($value, 'check-size')) / 2);
+          width: map-get($value, 'check-size');
+          height: map-get($value, 'check-size');
+        }
+      }
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--square {
+    .sui-radio__option {
+      label {
+        &::before {
+          border-radius: 4px;
+        }
+        &::after {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  &--hidden-label {
+    .sui-radio__label {
+      span {
+        display: none;
+      }
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, ChangeEvent, FocusEvent } from 'react';
 
 /**
  * Button Proptypes
@@ -99,27 +99,65 @@ export interface CheckBoxProps {
   /** 색상 */
   color?: string;
   /** 체크 이벤트 핸들러 */
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
  * Radio Proptypes
  */
 export interface RadioProps {
-  /** 입력값 */
-  value: string;
+  /** name */
+  name: string;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 레이블 숨김 여부 */
+  hiddenLabel?: boolean;
   /** 커스텀 클래스명 */
   className?: string;
-  /** 비활성화 여부 */
-  disabled?: boolean;
-  /** 선택 여부 */
-  checked?: boolean;
+  /** 모양 */
+  variant?: 'square' | 'circle';
+  /** 색상 */
+  color?: string;
+  /** 옵션 */
+  options: {
+    label: string;
+    value: string;
+    disabled?: boolean;
+  }[];
+  /** 방향 */
+  direction?: 'horizontal' | 'vertical';
+  /** 풀사이즈 너비 */
+  fullWidth?: boolean;
   /** 선택 이벤트 핸들러 */
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 /**
  * Select Proptypes
  */
+export interface SelectProps {
+  /** 옵션 */
+  options: {
+    label: string;
+    value: string;
+    disabled?: boolean;
+  }[];
+  /** 선택된 값 */
+  value?: string;
+  /** 선택된 값 설정 */
+  setValue?: (value: string) => void;
+  /** placeholder */
+  placeholder?: string;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 모양 */
+  variant?: 'filled' | 'outlined' | 'underline';
+  /** 풀사이즈 너비 */
+  fullWidth?: boolean;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 선택 이벤트 핸들러 */
+  onChange?: () => void;
+}
 
 /**
  * Switch Proptypes
