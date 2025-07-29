@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $checkbox-sizes-map: (
   sm: (
     width: 16px,
@@ -31,7 +33,7 @@ $checkbox-sizes-map: (
                 gap: 8px;
                 position: relative;
                 user-select: none;
-                font-size: map-get($value, font-size);
+                font-size: map.get($value, font-size);
                 
 
                 &::before {
@@ -42,8 +44,9 @@ $checkbox-sizes-map: (
                     border-radius: 4px;
                     background-color: #fff;
                     border: 1px solid #ddd;
-                    width: map-get($value, width);
-                    height: map-get($value, height);
+                    transition: background-color 0.08s ease-in-out, border-color 0.08s ease-in-out;
+                    width: map.get($value, width);
+                    height: map.get($value, height);
                 }
 
                 &::after {
@@ -57,9 +60,11 @@ $checkbox-sizes-map: (
                     mask-position: 65% 65%;
                     background-color: #fff;
                     content: '';
-                    display: none;
-                    width: map-get($value, width);
-                    height: map-get($value, height);
+                    transform: scale(0);
+                    transition: transform 0.2s ease-in-out;
+                    transform-origin: center 70%;
+                    width: map.get($value, width);
+                    height: map.get($value, height);
                 }
 
                 &:focus-visible {
@@ -77,7 +82,7 @@ $checkbox-sizes-map: (
                     }
 
                     &::after {
-                        display: block;
+                        transform: scale(1)!important;
                     }
                 }
             }
@@ -141,15 +146,15 @@ $checkbox-sizes-map: (
                     mask-repeat: no-repeat;
                     mask-position: 65% 65%;
                     background-color: #ddd;
+                    transition: none;
+                }
+
+                &::after {
+                    transition: none;
                 }
             }
 
             &:disabled {
-                &~label {
-                    &::before {
-                    }
-                }
-
                 &:checked {
                     &~label {
                         &::before {

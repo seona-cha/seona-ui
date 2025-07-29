@@ -369,7 +369,7 @@ function App() {
               </div>
               <div>
                 <label>체크 여부</label>
-                <input type="checkbox" onChange={(e) => setCheckboxProps({ ...CheckboxProps, checked: e.target.checked })} />
+                <input type="checkbox" checked={CheckboxProps.checked} onChange={(e) => setCheckboxProps({ ...CheckboxProps, checked: e.target.checked })} />
               </div>
             </div>
           </div>
