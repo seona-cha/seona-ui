@@ -31,33 +31,37 @@ const Radio: React.FC<RadioProps> = ({
 
   return (
     <div className={classes} style={styles}>
-        {options?.map((option) => (
-            <div 
-                key={option.value} 
-                className="sui-radio__option" 
-            >
-                <input 
-                    type="radio" 
-                    id={option.value}
-                    name={name}
-                    value={option.value}
-                    onChange={onChange}
-                    disabled={option.disabled}
-                />
-                <label 
-                    className="sui-radio__label" 
-                    htmlFor={option.value} 
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            e.currentTarget.click()
-                        }
-                    }}
+        {options?.map((option) => {
+            const uniqueId = `${name}-${option.value}`;
+
+            return (
+                <div 
+                    key={uniqueId} 
+                    className="sui-radio__option" 
                 >
-                    <span>{option.label}</span>
-                </label>
-            </div>
-        ))}
+                    <input 
+                        type="radio" 
+                        id={uniqueId}
+                        name={name}
+                        value={option.value}
+                        onChange={onChange}
+                        disabled={option.disabled}
+                    />
+                    <label 
+                        className="sui-radio__label" 
+                        htmlFor={uniqueId} 
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                e.currentTarget.click()
+                            }
+                        }}
+                    >
+                        <span>{option.label}</span>
+                    </label>
+                </div>   
+            )
+        })}
     </div>
   );
 };
