@@ -65,7 +65,7 @@ export interface InputProps {
   /** border-radius */
   radius?: `${number}px` | `${number}px ${number}px` | `${number}px ${number}px ${number}px` | `${number}px ${number}px ${number}px ${number}px`;
   /** 입력 이벤트 핸들러 */
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   /** 입력 영역 포커스 이벤트 핸들러 */
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   /** 커스텀 클래스명 */
