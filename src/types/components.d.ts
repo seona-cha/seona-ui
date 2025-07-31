@@ -131,6 +131,7 @@ export interface RadioProps {
   /** 선택 이벤트 핸들러 */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
+
 /**
  * Select Proptypes
  */
@@ -149,8 +150,12 @@ export interface SelectProps {
   placeholder?: string;
   /** 사이즈 */
   size?: 'sm' | 'md' | 'lg';
+  /** 너비 지정 */
+  width?: string;
   /** 모양 */
   variant?: 'filled' | 'outlined' | 'underline';
+  /** 색상 타입 */
+  color?: string;
   /** 풀사이즈 너비 */
   fullWidth?: boolean;
   /** 비활성화 여부 */
