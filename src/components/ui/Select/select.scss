@@ -31,7 +31,6 @@ $select-size: (
     overflow: hidden;
     text-overflow: ellipsis;
     padding-right: 36px!important;
-    transition: border-color 0.2s ease-in-out;
 
     &::after {
       position: absolute;
@@ -139,6 +138,7 @@ $select-size: (
       &__selected {
         border-radius: 0;
         border-bottom: 2px solid #ddd;
+        transition: border-color 0.2s ease-in-out;
       }
       &__option {
         &-list {
