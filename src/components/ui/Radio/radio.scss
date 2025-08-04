@@ -26,6 +26,16 @@ $radio-sizes: (
   flex-wrap: wrap;
   gap: 20px;
   width: fit-content;
+  
+  &__option {
+    label {
+      &:focus-visible {
+        outline: 2px solid var(--sui-point-color);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+    }
+  }
 
   @each $size, $value in $radio-sizes {
     &--#{$size} {
@@ -39,7 +49,7 @@ $radio-sizes: (
         }
 
         &:disabled + .sui-radio__label::before {
-          background-color: #ececec;
+          background-color: var(--sui-disabled-bg-color);
         }
       }
 
@@ -56,7 +66,7 @@ $radio-sizes: (
           content: '';
           display: block;
           border-radius: 50%;
-          border: 1px solid #ddd;
+          border: 1px solid var(--sui-border-color);
           box-sizing: border-box;
           width: map.get($value, 'size');
           height: map.get($value, 'size');

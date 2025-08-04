@@ -63,7 +63,8 @@ $select-size: (
     }
     &-item {
       &:hover {
-        background-color: #f4f4f4;
+        background-color: var(--sui-filled-bg-color);
+        font-weight: 600;
       }
     }
   }
@@ -80,6 +81,7 @@ $select-size: (
           &-item {
             padding: map.get($value, 'padding');
             font-size: map.get($value, 'font-size');
+            transition: background-color 0.15s ease-in-out;
           }  
         }
       }
@@ -107,12 +109,12 @@ $select-size: (
   &--filled {
     .sui-select {
       &__selected {
-        background-color: #f4f4f4;
+        background-color: var(--sui-filled-bg-color);
         border-color: transparent;
       }
       &__option {
         &-list {
-          border: 1px solid #f4f4f4;
+          border: 1px solid var(--sui-filled-bg-color);
           border-top: none;
         }
       }
@@ -122,11 +124,11 @@ $select-size: (
   &--outlined {
     .sui-select {
       &__selected {
-        border: 1px solid #ddd;
+        border: 1px solid var(--sui-border-color);
       }
       &__option {
         &-list {
-          border: 1px solid #ddd;
+          border: 1px solid var(--sui-border-color);
           border-top: none;
         }
       }
@@ -137,7 +139,7 @@ $select-size: (
     .sui-select {
       &__selected {
         border-radius: 0;
-        border-bottom: 2px solid #ddd;
+        border-bottom: 2px solid var(--sui-border-color);
         transition: border-color 0.2s ease-in-out;
       }
       &__option {
@@ -157,12 +159,12 @@ $select-size: (
 
   &--disabled {
     .sui-select__selected {
-      background-color: #f4f4f4;
+      background-color: var(--sui-disabled-bg-color);
       cursor: default;
-      color: #aaa;
+      color: var(--sui-disabled-text-color);
 
       &::after {
-        background-color: #aaa;
+        background-color: var(--sui-disabled-border-color);
       }
     }
   }

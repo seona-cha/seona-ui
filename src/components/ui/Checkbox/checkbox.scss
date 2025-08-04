@@ -43,7 +43,7 @@ $checkbox-sizes-map: (
                     height: 100%;
                     border-radius: 4px;
                     background-color: #fff;
-                    border: 1px solid #ddd;
+                    border: 1px solid var(--sui-border-color);
                     transition: background-color 0.08s ease-in-out, border-color 0.08s ease-in-out;
                     width: map.get($value, width);
                     height: map.get($value, height);
@@ -68,8 +68,9 @@ $checkbox-sizes-map: (
                 }
 
                 &:focus-visible {
-                    outline: 2px solid #000;
+                    outline: 2px solid var(--sui-point-color);
                     outline-offset: 2px;
+                    border-radius: 4px;
                 }
             }
 
@@ -92,15 +93,15 @@ $checkbox-sizes-map: (
                     color: #999;
 
                     &::before {
-                        background-color: #ececec;
+                        background-color: var(--sui-disabled-bg-color);
                     }
                 }
 
                 &:checked {
                     &~label {
                         &::before {
-                            background-color: #cccccc;
-                            border-color: #ccc;
+                            background-color: var(--sui-disabled-text-color);
+                            border-color: var(--sui-disabled-text-color);
                         }
                     }
                 }
@@ -145,7 +146,7 @@ $checkbox-sizes-map: (
                     mask-size: 70%;
                     mask-repeat: no-repeat;
                     mask-position: 65% 65%;
-                    background-color: #ddd;
+                    background-color: var(--sui-border-color);
                     transition: none;
                 }
 
@@ -161,7 +162,7 @@ $checkbox-sizes-map: (
                             background-color: transparent;
                         }
                         &::after {
-                            background-color: #aaa;
+                            background-color: var(--sui-disabled-text-color);
                         }
                     }
 

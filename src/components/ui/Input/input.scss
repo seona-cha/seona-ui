@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $input-sizes-map: (
     sm: (
         width: 100px,
@@ -32,19 +34,23 @@ $input-sizes-map: (
   }
 
   input {
-    border: 1px solid #ddd;
+    border: 1px solid var(--sui-border-color);
     border-radius: var(--input-radius);
     padding: 4px;
     max-width: 100%;
 
     &:disabled {
-      background: #eee;
-      color: #aaa;
+      background: var(--sui-disabled-bg-color);
+      color: var(--sui-disabled-text-color);
+      border-color: var(--sui-disabled-border-color);
+    }
+    &:focus {
+      outline-color: var(--sui-point-color);
     }
   }
 
   &__error-message {
-    color: rgb(212, 10, 54);
+    color: var(--sui-error-text-color);
     font-size: 12px;
   }
 
@@ -61,7 +67,7 @@ $input-sizes-map: (
   &--filled {
     input {
       border: none!important;
-      background: #f4f4f4;
+      background: var(--sui-filled-bg-color);
       border-radius: var(--input-radius);
       padding: 4px 8px;
     }
@@ -70,12 +76,12 @@ $input-sizes-map: (
   &--underline {
     input {
       border: none;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid var(--sui-border-color);
       border-radius: 0!important;
       outline: none;
 
       &:focus {
-        border-color: #000;
+        border-color: var(--sui-point-color);
         outline: none;
       }
     }

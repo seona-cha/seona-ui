@@ -27,13 +27,17 @@ $textarea-sizes-map: (
   max-width: 100%;
 
   textarea {
-    border: 1px solid #ddd;
+    border: 1px solid var(--sui-border-color);
     border-radius: var(--textarea-radius);
     max-width: 100%;
 
     &:disabled {
-      background: #eee;
-      color: #aaa;
+      background: var(--sui-disabled-bg-color);
+      color: var(--sui-disabled-text-color);
+      border-color: var(--sui-disabled-border-color);
+    }
+    &:focus {
+      outline-color: var(--sui-point-color);
     }
   }
 
@@ -81,7 +85,7 @@ $textarea-sizes-map: (
   &--filled {
     textarea {
       border: none;
-      background: #f4f4f4;
+      background: var(--sui-filled-bg-color);
       border-radius: var(--textarea-radius);
     }
   }
