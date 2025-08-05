@@ -1,0 +1,106 @@
+import Select from '../../components/ui/Select'
+import Input from '../../components/ui/Input'
+import Button from '../../components/ui/Button'
+import { useState } from 'react'
+import type { SelectProps } from '../../types/components'
+
+function GuideSelect() {
+    const [selectValue, setSelectValue] = useState('')
+    const [selectProps, setSelectProps] = useState({
+      options: [],
+      value: selectValue,
+      setValue: (value: string) => {
+        setSelectValue(value)
+      },
+      placeholder: '옵션 선택',
+      size: 'md',
+      width: '',
+      variant: 'filled',
+      color: '#6366F1',
+      fullWidth: false,
+      disabled: false,
+      onChange: () => {
+        console.log('change')
+      },
+    } as SelectProps)
+  return (
+    <>
+      <div className="sui-page-wrapper">
+        <div className="sui-guide">
+        <h2 className="sui-guide__title">Select</h2>
+          <div className="sui-guide__control">
+              <Select
+                {...selectProps}
+                value={selectValue}
+                setValue={setSelectValue}
+                onChange={() => {console.log('change')}}
+                options={[{ label: 'option1', value: 'option1' }, { label: 'option2', value: 'option2' }]}
+              />
+              <Button
+                size="sm"
+                variant="text"
+                onClick={() => {
+                  setSelectValue('')
+                }}
+              >
+                value reset
+              </Button>
+            <div className="sui-guide__control-group">
+              <div>
+                <label>모양</label>
+                <select value={selectProps.variant} onChange={(e) => setSelectProps({ ...selectProps, variant: e.target.value as 'filled' | 'outlined' | 'underline' })}>
+                  <option value="filled">filled</option>
+                  <option value="outlined">outlined</option>
+                  <option value="underline">underline</option>
+                </select>
+              </div>
+              <div>
+                <label>사이즈</label>
+                <select value={selectProps.size} onChange={(e) => setSelectProps({ ...selectProps, size: e.target.value as 'sm' | 'md' | 'lg' })}>
+                  <option value="sm">sm</option>
+                  <option value="md">md</option>
+                  <option value="lg">lg</option>
+                </select>
+              </div>
+              <div>
+                <label>placeholder</label>
+                <Input
+                  name="select-placeholder"
+                  id="select-placeholder"
+                  type="text"
+                  value={selectProps.placeholder}
+                  onChange={(e) => setSelectProps({ ...selectProps, placeholder: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>너비</label>
+                <Input
+                  name="select-width"
+                  id="select-width"
+                  type="number"
+                  size="md"
+                  onChange={(e) => setSelectProps({ ...selectProps, width: e.target.value + 'px' as `${number}px` })}
+                  value={selectProps.width?.replace('px', '') || ''}
+                />
+              </div>
+              <div>
+                <label>색상</label>
+                <input type="color" value={selectProps.color} onChange={(e) => setSelectProps({ ...selectProps, color: e.target.value })} />
+              </div>
+              <div>
+                <label>비활성화</label>
+                <input type="checkbox" onChange={(e) => setSelectProps({ ...selectProps, disabled: e.target.checked })} />
+              </div>
+              <div>
+                <label>Full Width</label>
+                <input type="checkbox" onChange={(e) => setSelectProps({ ...selectProps, fullWidth: e.target.checked })} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default GuideSelect
