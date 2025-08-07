@@ -7,7 +7,13 @@ import type { SelectProps } from '../../types/components'
 function GuideSelect() {
     const [selectValue, setSelectValue] = useState('')
     const [selectProps, setSelectProps] = useState({
-      options: [],
+      options: [
+        { label: 'option 1', value: 'option1' },
+        { label: 'option 2', value: 'option2' },
+        { label: 'option 3', value: 'option3' },
+        { label: 'option 4', value: 'option4' },
+        { label: 'option 5', value: 'option5' },
+      ],
       value: selectValue,
       setValue: (value: string) => {
         setSelectValue(value)
@@ -34,7 +40,6 @@ function GuideSelect() {
                 value={selectValue}
                 setValue={setSelectValue}
                 onChange={() => {console.log('change')}}
-                options={[{ label: 'option1', value: 'option1' }, { label: 'option2', value: 'option2' }]}
               />
               <Button
                 size="sm"
