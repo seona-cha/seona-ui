@@ -8,42 +8,42 @@ const ListPage = () => {
       description: "다양한 스타일과 상태를 지원하는 버튼 컴포넌트입니다. Primary, Secondary, Danger 등의 스타일과 크기 옵션을 제공합니다.",
       icon: "🔘",
       path: "/guide/button",
-      features: ["다양한 스타일", "크기 옵션", "상태 관리"]
+      features: ["다양한 스타일", "크기 옵션", "색상 선택"]
     },
     {
       title: "Input",
       description: "유연하고 접근성을 고려한 입력 컴포넌트입니다. 유효성 검사, 라벨, 헬퍼 텍스트 등을 지원합니다.",
       icon: "📝",
       path: "/guide/input",
-      features: ["유효성 검사", "라벨 지원", "접근성"]
+      features: ["다양한 스타일", "에러 메시지 제공", "숨김 레이블"]
     },
     {
       title: "Textarea",
       description: "여러 줄 텍스트 입력을 위한 컴포넌트입니다. 자동 높이 조절과 최대 길이 제한 기능을 제공합니다.",
       icon: "📄",
       path: "/guide/textarea",
-      features: ["자동 크기 조절", "최대 길이 제한", "리사이즈 제어"]
+      features: ["다양한 스타일", "최대 길이 제한", "리사이즈 제어"]
     },
     {
       title: "Checkbox",
       description: "단일 또는 다중 선택을 위한 체크박스 컴포넌트입니다. 그룹 선택과 중간 상태를 지원합니다.",
       icon: "✅",
       path: "/guide/checkbox",
-      features: ["그룹 선택", "중간 상태", "커스텀 스타일"]
+      features: ["모양, 색상 선택", "숨김 레이블", "비활성화 옵션"]
     },
     {
       title: "Radio",
       description: "단일 선택을 위한 라디오 버튼 컴포넌트입니다. 그룹 관리와 커스텀 스타일링을 제공합니다.",
       icon: "🔘",
       path: "/guide/radio",
-      features: ["그룹 관리", "커스텀 스타일", "키보드 탐색"]
+      features: ["그룹 관리", "모양, 색상 선택", "키보드 탐색"]
     },
     {
       title: "Select",
       description: "드롭다운 선택 컴포넌트입니다. 검색, 다중 선택, 그룹화 등의 고급 기능을 지원합니다.",
       icon: "📋",
       path: "/guide/select",
-      features: ["검색 기능", "다중 선택", "옵션 그룹화"]
+      features: ["다양한 스타일", "접근성", "비활성화 옵션"]
     }
   ];
 
