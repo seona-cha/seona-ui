@@ -15,10 +15,11 @@ const Select: React.FC<SelectProps> = ({
     width,
     fullWidth = false,
     onChange,
+    className,
 }) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(1);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const classes = [
         'sui-select',
@@ -27,6 +28,7 @@ const Select: React.FC<SelectProps> = ({
         disabled && 'sui-select--disabled',
         isOpen && 'sui-select--open',
         fullWidth && 'sui-select--full-width',
+        className,
     ].filter(Boolean).join(' ')
 
     const styles = {
@@ -67,7 +69,7 @@ const Select: React.FC<SelectProps> = ({
                         if (disabled) return;
                         setIsOpen(!isOpen);
 
-                        // 선택된 옵션값으로 포커스스
+                        // 선택된 옵션값으로 포커스
                         if (value) {
                             const selectedOption = options.find(option => option.value === value);
                             if (selectedOption) {

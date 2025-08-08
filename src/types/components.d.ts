@@ -136,6 +136,8 @@ export interface RadioProps {
  * Select Proptypes
  */
 export interface SelectProps {
+  /** 커스텀 클래스명 */
+  className?: string;
   /** 옵션 */
   options: {
     label: string;
