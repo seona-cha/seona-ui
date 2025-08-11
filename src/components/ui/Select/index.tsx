@@ -106,9 +106,9 @@ const Select: React.FC<SelectProps> = ({
                         }}
                         onClick={() => {
                             if (option.disabled) return;
-                            setValue && setValue(option.value);
+                            setValue?.(option.value);
                             setIsOpen(false);
-                            onChange && onChange();
+                            onChange?.();
                         }}
                         onKeyDown={(e) => {
                             // 엔터 또는 스페이스바 클릭 시 옵션 선택
@@ -117,8 +117,8 @@ const Select: React.FC<SelectProps> = ({
                                 if (option.disabled) return;
                                 setIsOpen(false);
                                 setCurrentIndex(1);
-                                setValue && setValue(option.value);
-                                onChange && onChange();
+                                setValue?.(option.value);
+                                onChange?.();
                                 (document.querySelector('.sui-select__selected') as HTMLElement)?.focus();
                             }
                             if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
