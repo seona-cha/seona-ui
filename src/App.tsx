@@ -8,6 +8,7 @@ import GuideTextarea from './pages/guide/Textarea'
 import GuideCheckbox from './pages/guide/Checkbox'
 import GuideRadio from './pages/guide/Radio'
 import GuideSelect from './pages/guide/Select'
+import GuideStarRating from './pages/guide/StarRating'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/guide/checkbox" element={<GuideCheckbox />} />
           <Route path="/guide/radio" element={<GuideRadio />} />
           <Route path="/guide/select" element={<GuideSelect />} />
+          <Route path="/guide/star-rating" element={<GuideStarRating />} />
         </Routes>
       </Router>
     </>

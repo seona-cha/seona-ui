@@ -167,6 +167,36 @@ export interface SelectProps {
 }
 
 /**
+ * StarRating Proptypes
+ */
+export interface StarRatingProps {
+  /** 커스텀 클래스명 */
+  className?: string;
+  /** 별점 (제어 가능) */
+  rating?: number;
+  /** 별점 최대값 */
+  maxRating?: number;
+  /** 별점 제어 여부 (true: 제어 불가, false: 제어 가능) */
+  readOnly?: boolean;
+  /** 별점 색상 */
+  starColor?: string;
+  /** 별점 배경 색상 */
+  backgroundColor?: string;
+  /** 사이즈 */
+  size?: 'sm' | 'md' | 'lg';
+  /** 커스텀 아이콘 */
+  customIcon?: React.ReactNode;
+  /** 비활성화 여부 */
+  disabled?: boolean;
+  /** 텍스트 노출 여부 */
+  showLabel?: boolean;
+  /** 텍스트 위치 */
+  labelPosition?: 'top' | 'bottom' | 'left' | 'right';
+  /** 별점 선택 이벤트 핸들러 */
+  onChange?: (rating: number) => void;
+}
+
+/**
  * Switch Proptypes
  */
 

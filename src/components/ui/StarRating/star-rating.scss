@@ -1,0 +1,116 @@
+@use 'sass:map';
+
+$star-sizes-map: (
+    'sm': (
+        star-size: 16px,
+        label-size: 12px,
+    ),
+    'md': (
+        star-size: 24px,
+        label-size: 16px,
+    ),
+    'lg': (
+        star-size: 32px,
+        label-size: 20px,
+    ),
+);
+
+.sui-star-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: fit-content;
+
+    &__star-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__star {
+        cursor: pointer;
+        user-select: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease-out;
+
+        svg {
+            fill: var(--sui-star-bg-color);
+            transition: all 0.3s ease-out;
+            path {
+                stroke: var(--sui-star-bg-color);
+                transition: all 0.3s ease-out;
+            }
+        }
+    }
+
+    &__star--filled {
+        svg {
+            fill: var(--sui-star-color);
+            path {
+                stroke: var(--sui-star-color);
+            }
+        }
+    }
+
+    // size 조정
+    @each $size, $value in $star-sizes-map {
+        &--#{$size} {
+            .sui-star-rating {
+                &__star {
+                    position: relative;
+                    svg {
+                        width: map.get($value, 'star-size');
+                        height: map.get($value, 'star-size');
+                    }
+
+                    &--hover {
+                        margin: calc(map.get($value, 'star-size') * -0.075);
+                        transition: margin 0.3s ease-out;
+                        svg {
+                            width: map.get($value, 'star-size') * 1.15;
+                            height: map.get($value, 'star-size') * 1.15;
+                        }
+                    }
+                }
+                &__label {
+                    font-size: map.get($value, 'label-size');
+                }
+            }
+        }
+    }
+                
+
+    // label 위치 조정
+    &--label{
+        &-top {
+            flex-direction: column-reverse;
+        }
+        &-bottom {
+            flex-direction: column;
+        }
+        &-left {
+            flex-direction: row-reverse;
+        }
+        &-right {
+            flex-direction: row;
+        }
+    }
+
+    // disabled 상태
+    &--disabled {
+        opacity: 0.5;
+        .sui-star-rating__star {
+            cursor: default;
+        }
+    }
+
+    // readOnly 상태
+    &--read-only {
+        .sui-star-rating__star {
+            cursor: default;
+        }
+    }
+}
