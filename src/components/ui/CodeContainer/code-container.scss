@@ -1,0 +1,52 @@
+.sui-code-container {
+    background-color: #1e1e1e;
+    border: 1px solid #3c3c3c;
+    border-radius: 6px;
+    margin: 16px 0;
+    overflow: hidden;
+    width: 100%;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 8px 14px;
+      background-color: #2d2d30;
+      border-bottom: 1px solid #3c3c3c;
+    }
+
+    &__title {
+      color: #ececec;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+  
+    pre {
+      margin: 0;
+      padding: 16px;
+      white-space: pre !important;
+      word-wrap: break-word;
+      display: block;
+      color: #d4d4d4;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  
+    code {
+      color: #d4d4d4;
+      background: none;
+      padding: 0;
+      border: none;
+      font-family: inherit;
+      white-space: pre !important;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
