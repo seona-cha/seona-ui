@@ -24,7 +24,7 @@ $btn-variant-map: (
   'outlined:hover:not([disabled]):not(.sui-button--no-hover-effect)': (
     border: 2px solid var(--btn-hover-color),
     background: var(--btn-hover-color),
-    color: var(--btn-text-color),
+    color: #fff,
   ),
   'text:hover:not([disabled]):not(.sui-button--no-hover-effect)': (
     color: var(--btn-hover-color),
