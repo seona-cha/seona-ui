@@ -28,7 +28,8 @@ function GuideButton() {
         <div className="sui-guide">
           <h2 className="sui-guide__title">Button</h2>
           <p className="sui-guide__description">
-            버튼 컴포넌트는 클릭시 링크 이동 혹은 함수를 호출하는 버튼을 생성하는 데 사용됩니다. <br />크기, 모양, 색상, 아이콘 추가 옵션을 제공하여 버튼의 모양과 기능을 조정할 수 있습니다.
+            버튼 컴포넌트는 클릭시 링크 이동 혹은 함수를 호출하는 버튼을 생성하는 데 사용됩니다. <br />
+            크기, 모양, 색상, 아이콘 추가 옵션을 제공하여 버튼의 모양과 기능을 조정할 수 있습니다.
           </p>
           <div className="sui-guide__content">
             <h3 className="sui-guide__subtitle">Size Option</h3>
@@ -69,10 +70,11 @@ function GuideButton() {
             </CodeContainer>
             <h3 className="sui-guide__subtitle">Radius Option</h3>
             <p className="sui-guide__description">
-              버튼의 Radius를 조정할 수 있는 옵션으로, 숫자를 입력하여 Radius 값을 조정할 수 있습니다. <br />
+              버튼의 Radius를 조정할 수 있는 옵션으로, '24px' 또는 '24px 0px 0px 24px'와 같이 문자열로 입력하여 Radius 값을 조정할 수 있습니다. <br />
               따로 옵션값을 입력하지 않을 경우 기본 버튼 Radius는 0px입니다.
             </p>
             <div className="sui-guide__content-item">
+              <Input type="text" name="button-radius" id="button-radius" value={buttonProps.radius} onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value as `${number}px` })} />
               <input type="range" min="0" max="24" onChange={(e) => setButtonProps({ ...buttonProps, radius: e.target.value + 'px' as `${number}px` })} />
               <p className="sui-guide__content-item-title">Radius: {buttonProps.radius} (조정해 보세요!)</p>
               <Button radius={buttonProps.radius}>Button</Button>
@@ -278,6 +280,22 @@ function GuideButton() {
                 <input type="checkbox" checked={buttonProps.hoverEffect} onChange={(e) => setButtonProps({ ...buttonProps, hoverEffect: e.target.checked })} />
               </div>
             </div>
+            <CodeContainer>
+              {`<Button
+  size="${buttonProps.size}"
+  variant="${buttonProps.variant}"
+  radius="${buttonProps.radius}"
+  disabled={${buttonProps.disabled}}
+  fullWidth={${buttonProps.fullWidth}}
+  hoverEffect={${buttonProps.hoverEffect}}
+  btnColor="${buttonProps.btnColor}"
+  hoverColor="${buttonProps.hoverColor}"
+  textColor="${buttonProps.textColor}"
+  onClick={handleClick}
+>
+  ${buttonProps.children}
+</Button>`}
+            </CodeContainer>
           </div>
         </div>
       </div>
