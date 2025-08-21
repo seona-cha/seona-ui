@@ -1,0 +1,186 @@
+@use 'sass:map';
+
+$checkbox-sizes-map: (
+  sm: (
+    width: 16px,
+    height: 16px,
+    font-size: 14px,
+  ),
+  md: (
+    width: 20px,
+    height: 20px,
+    font-size: 16px,
+  ),
+  lg: (
+    width: 24px,
+    height: 24px,
+    font-size: 18px,
+  ),
+);
+
+.sui-checkbox {
+  width: fit-content;
+  max-width: 100%;
+
+  @each $size, $value in $checkbox-sizes-map {
+    &--#{$size} {
+        input {
+            display: none;
+
+            &~label {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                position: relative;
+                user-select: none;
+                font-size: map.get($value, font-size);
+                
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 4px;
+                    background-color: #fff;
+                    border: 1px solid var(--sui-border-color);
+                    transition: background-color 0.08s ease-in-out, border-color 0.08s ease-in-out;
+                    width: map.get($value, width);
+                    height: map.get($value, height);
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                    mask-size: 70%;
+                    mask-repeat: no-repeat;
+                    mask-position: 65% 65%;
+                    background-color: #fff;
+                    content: '';
+                    transform: scale(0);
+                    transition: transform 0.2s ease-in-out;
+                    transform-origin: center 70%;
+                    width: map.get($value, width);
+                    height: map.get($value, height);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--sui-point-color);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
+            }
+
+            &:checked {
+                &~label {
+
+                    &::before {
+                        border-color: var(--sui-checkbox-color);
+                        background-color: var(--sui-checkbox-color);
+                    }
+
+                    &::after {
+                        transform: scale(1)!important;
+                    }
+                }
+            }
+
+            &:disabled {
+                &~label {
+                    color: #999;
+
+                    &::before {
+                        background-color: var(--sui-disabled-bg-color);
+                    }
+                }
+
+                &:checked {
+                    &~label {
+                        &::before {
+                            background-color: var(--sui-disabled-text-color);
+                            border-color: var(--sui-disabled-text-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &--hidden-label {
+        input {
+            &~label {
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--circle {
+        input {
+            &~label {
+                &::before {
+                    border-radius: 50%;
+                }
+            }
+
+            &:checked {
+                &~label {
+                    &::after {
+                        background-size: 65%;
+                    }
+                }
+            }
+        }
+    }
+
+    &--line {
+        input {
+            &~label {
+                &::before {
+                    border: none;
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 78.369 78.369'%3E%3Cpath d='M78.049 19.015 29.458 67.606a1.094 1.094 0 0 1-1.548 0L.32 40.015a1.094 1.094 0 0 1 0-1.547l6.704-6.704a1.095 1.095 0 0 1 1.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 0 1 1.548 0l6.703 6.704a1.094 1.094 0 0 1 0 1.548z'/%3E%3C/svg%3E");
+                    mask-size: 70%;
+                    mask-repeat: no-repeat;
+                    mask-position: 65% 65%;
+                    background-color: var(--sui-border-color);
+                    transition: none;
+                }
+
+                &::after {
+                    transition: none;
+                }
+            }
+
+            &:disabled {
+                &:checked {
+                    &~label {
+                        &::before {
+                            background-color: transparent;
+                        }
+                        &::after {
+                            background-color: var(--sui-disabled-text-color);
+                        }
+                    }
+
+                }
+            }
+
+            &:checked {
+                &~label {
+                    &::before {
+                        background-color: transparent;
+                    }
+
+                    &::after {
+                        background-color: var(--sui-checkbox-color);
+                    }
+                }
+            }
+        }
+    }
+  }
+}

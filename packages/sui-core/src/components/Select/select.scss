@@ -1,0 +1,176 @@
+@use 'sass:map';
+
+$select-size: (
+  sm: (
+    width: 150px,
+    padding: 10px 12px,
+    font-size: 12px,
+  ),
+  md: (
+    width: 200px,
+    padding: 12px 16px,
+    font-size: 14px,
+  ),
+  lg: (
+    width: 250px,
+    padding: 16px 16px,
+    font-size: 16px,
+  ),
+);
+
+.sui-select {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  min-width: 80px;
+
+  &__selected {
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 36px!important;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 1024 1024'%3E%3Cpath d='M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8 316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496z'/%3E%3C/svg%3E");
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-color: var(--sui-select-color);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  &__option {
+    &-list {
+      position: absolute;
+      top: calc(100% - 1px);
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-radius: 0 0 4px 4px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    &-item {
+      &:hover {
+        background-color: var(--sui-filled-bg-color);
+        font-weight: 600;
+      }
+    }
+  }
+
+  @each $key, $value in $select-size {
+    &--#{$key} {
+      width: var(--sui-select-width, map.get($value, 'width') )!important;
+      .sui-select {
+        &__selected {
+          padding: map.get($value, 'padding');
+          font-size: map.get($value, 'font-size');
+        }
+        &__option {
+          &-item {
+            padding: map.get($value, 'padding');
+            font-size: map.get($value, 'font-size');
+            transition: background-color 0.15s ease-in-out;
+          }  
+        }
+      }
+    }
+  }
+
+  
+
+  &--open {
+    .sui-select__selected {
+      border-radius: 4px 4px 0 0;
+      border-bottom: 1px solid #fff;
+
+      &::after {
+        transform: translateY(-50%) scaleY(-1);
+      }
+    }
+    .sui-select__option {
+      &-list {
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  &--filled {
+    .sui-select {
+      &__selected {
+        background-color: var(--sui-filled-bg-color);
+        border-color: transparent;
+      }
+      &__option {
+        &-list {
+          border: 1px solid var(--sui-filled-bg-color);
+          border-top: none;
+        }
+      }
+    }
+  }
+
+  &--outlined {
+    .sui-select {
+      &__selected {
+        border: 1px solid var(--sui-border-color);
+      }
+      &__option {
+        &-list {
+          border: 1px solid var(--sui-border-color);
+          border-top: none;
+        }
+      }
+    }
+  }
+
+  &--underline {
+    .sui-select {
+      &__selected {
+        border-radius: 0;
+        border-bottom: 2px solid var(--sui-border-color);
+        transition: border-color 0.2s ease-in-out;
+      }
+      &__option {
+        &-list {
+          top: 100%;
+          border: 1px solid transparent;
+          border-top: none;
+        }
+      }
+    }
+    &.sui-select--open {
+      .sui-select__selected {
+        border-color: var(--sui-select-color);
+      }
+    }
+  }
+
+  &--disabled {
+    .sui-select__selected {
+      background-color: var(--sui-disabled-bg-color);
+      cursor: default;
+      color: var(--sui-disabled-text-color);
+
+      &::after {
+        background-color: var(--sui-disabled-border-color);
+      }
+    }
+  }
+
+  &--full-width {
+    width: 100%!important;
+  }
+
+}

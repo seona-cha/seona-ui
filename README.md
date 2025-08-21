@@ -1,69 +1,101 @@
-# React + TypeScript + Vite
+# Seona UI Monorepo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Seona UI 컴포넌트 라이브러리와 문서 사이트를 포함한 Monorepo 프로젝트입니다.
 
-Currently, two official plugins are available:
+## 📁 프로젝트 구조
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+seona-ui/
+├── packages/
+│   ├── sui-core/          # React 컴포넌트 라이브러리 (npm 배포용)
+│   └── sui-docs/          # 문서 사이트 (로컬 개발용)
+├── package.json           # 루트 설정
+└── pnpm-workspace.yaml    # 워크스페이스 설정
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 시작하기
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 의존성 설치
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 문서 사이트 개발 서버 실행
+
+```bash
+npm run dev:docs
+```
+
+### 컴포넌트 라이브러리 빌드
+
+```bash
+npm run build:core
+```
+
+### 문서 사이트 빌드
+
+```bash
+npm run build:docs
+```
+
+## 📦 패키지별 설명
+
+### @seona/sui-core
+
+React 컴포넌트 라이브러리로, 다음과 같은 컴포넌트들을 제공합니다:
+
+- Button
+- Input
+- Select
+- Checkbox
+- Radio
+- Textarea
+- StarRating
+- CodeContainer
+
+**설치:**
+```bash
+npm install @seona/sui-core
+```
+
+**사용법:**
+```tsx
+import { Button, Input, Select } from '@seona/sui-core'
+
+function App() {
+  return (
+    <div>
+      <Button variant="contained" size="lg">
+        Click me
+      </Button>
+      <Input placeholder="Enter text..." />
+      <Select options={['Option 1', 'Option 2']} />
+    </div>
+  )
+}
+```
+
+### @seona/sui-docs
+
+컴포넌트 라이브러리의 문서 사이트입니다. 각 컴포넌트의 사용법과 예제를 제공합니다.
+
+## 🔧 개발 명령어
+
+| 명령어 | 설명 |
+|--------|------|
+| `npm run dev:docs` | 문서 사이트 개발 서버 실행 |
+| `npm run build:core` | 컴포넌트 라이브러리 빌드 |
+| `npm run build:docs` | 문서 사이트 빌드 |
+| `npm run lint` | 모든 패키지 린트 실행 |
+| `npm run publish:core` | 컴포넌트 라이브러리 npm 배포 |
+
+## 📋 요구사항
+
+- Node.js 18.0.0 이상
+- React 18.0.0 이상
+- React DOM 18.0.0 이상
+
+## 📄 라이선스
+
+MIT

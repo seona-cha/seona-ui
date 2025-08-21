@@ -1,0 +1,92 @@
+$textarea-sizes-map: (
+    sm: (
+        width: 200px,
+        height: 120px,
+        font-size: 14px,
+        padding: 8px,
+    ),
+    md: (
+        width: 300px,
+        height: 160px,
+        font-size: 16px,
+        padding: 10px,
+    ),
+    lg: (
+        width: 400px,
+        height: 200px,
+        font-size: 18px,
+        padding: 12px,
+    )
+);
+
+.sui-textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+
+  textarea {
+    border: 1px solid var(--sui-border-color);
+    border-radius: var(--textarea-radius);
+    max-width: 100%;
+
+    &:disabled {
+      background: var(--sui-disabled-bg-color);
+      color: var(--sui-disabled-text-color);
+      border-color: var(--sui-disabled-border-color);
+    }
+    &:focus {
+      outline-color: var(--sui-point-color);
+    }
+  }
+
+  &__hidden-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  @each $size, $value in $textarea-sizes-map {
+    &--#{$size} {
+        textarea {
+            @each $key, $value in $value {
+                #{$key}: $value;
+            }
+        }
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+    textarea {
+      width: 100%;
+    }
+  }
+
+  &--resize-none {
+    resize: none;
+  }
+
+  &--resize-both {
+    resize: both;
+  }
+
+  &--resize-horizontal {
+    resize: horizontal;
+  }
+
+  &--resize-vertical {
+    resize: vertical;
+  }
+
+  &--filled {
+    textarea {
+      border: none;
+      background: var(--sui-filled-bg-color);
+      border-radius: var(--textarea-radius);
+    }
+  }
+}
